@@ -1,5 +1,3 @@
-Here is the **corrected schedule with part names and code scope**, carefully aligned so there are no structural mistakes. The feature-first layout keeps each feature self-contained, while shared and app-level code stay outside the feature folders.[1][2][3]
-
 ## Part 1 — Core models
 **Code:**
 - `lib/features/users/domain/entities/user_entity.dart`
@@ -66,8 +64,7 @@ Here is the **corrected schedule with part names and code scope**, carefully ali
 - `test/presentation/pages/user_list_page_test.dart`
 - `test/presentation/pages/shipment_list_page_test.dart`
 
-## Important correction
-The earlier schedule mixed a few paths. The safest consistent structure is:
+
 - `features/.../domain` for entities, repositories, and use cases.
 - `features/.../data` for DTOs and repository implementations.
 - `features/.../presentation` for blocs, pages, and widgets.
@@ -76,9 +73,6 @@ The earlier schedule mixed a few paths. The safest consistent structure is:
 
 One more correction: `app_router.dart` should be inside `lib/app/router/app_router.dart`, not under `lib/presentation/router/`.[3][5]
 
-Would you like me to turn this into a **final exact folder tree with file names and the part number beside each one**?
-
-Sources
 [1] Flutter Clean Architecture - Fast Feature-First Setup Guide https://dev.to/shanshaji/flutter-clean-architecture-fast-feature-first-setup-guide-342l
 [2] Clean Architecture in Flutter: Principles, Layers & Best Practices https://leancode.co/glossary/clean-architecture-in-flutter
 [3] Flutter Clean Architecture [1]: An Overview & Project Structure https://dev.to/marwamejri/flutter-clean-architecture-1-an-overview-project-structure-4bhf
