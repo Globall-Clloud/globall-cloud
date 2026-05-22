@@ -73,6 +73,7 @@
 
 One more correction: `app_router.dart` should be inside `lib/app/router/app_router.dart`, not under `lib/presentation/router/`.[3][5]
 
+ن
 [1] Flutter Clean Architecture - Fast Feature-First Setup Guide https://dev.to/shanshaji/flutter-clean-architecture-fast-feature-first-setup-guide-342l
 [2] Clean Architecture in Flutter: Principles, Layers & Best Practices https://leancode.co/glossary/clean-architecture-in-flutter
 [3] Flutter Clean Architecture [1]: An Overview & Project Structure https://dev.to/marwamejri/flutter-clean-architecture-1-an-overview-project-structure-4bhf
