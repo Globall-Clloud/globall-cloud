@@ -1,0 +1,114 @@
+Here is the **final exact folder tree with the part number beside each file**.
+
+```text
+lib/
+├── core/
+│   ├── constants/
+│   │   └── app_constants.dart  [Part 2]
+│   ├── errors/
+│   │   └── failures.dart  [Part 2]
+│   ├── utils/
+│   │   └── validators.dart  [Part 2]
+│   └── theme/
+│       └── app_theme.dart  [Part 2]
+├── shared/
+│   └── widgets/
+│       ├── primary_button.dart  [Part 2]
+│       ├── error_widget.dart  [Part 2]
+│       └── loading_widget.dart  [Part 2]
+├── features/
+│   ├── users/
+│   │   ├── domain/
+│   │   │   ├── entities/
+│   │   │   │   └── user_entity.dart  [Part 1]
+│   │   │   ├── repositories/
+│   │   │   │   └── user_repository.dart  [Part 3]
+│   │   │   └── usecases/
+│   │   │       ├── get_users_usecase.dart  [Part 4]
+│   │   │       ├── get_user_usecase.dart  [Part 4]
+│   │   │       └── update_user_usecase.dart  [Part 4]
+│   │   ├── data/
+│   │   │   ├── dto/
+│   │   │   │   └── user_dto.dart  [Not written]
+│   │   │   └── repositories/
+│   │   │       └── user_repository_impl.dart  [Part 3]
+│   │   └── presentation/
+│   │       ├── bloc/
+│   │       │   ├── user_state.dart  [Part 5]
+│   │       │   └── user_cubit.dart  [Part 5]
+│   │       ├── pages/
+│   │       │   └── user_list_page.dart  [Part 5]
+│   │       └── widgets/
+│   │           └── user_card.dart  [Part 10]
+│   └── shipments/
+│       ├── domain/
+│       │   ├── entities/
+│       │   │   └── shipment_entity.dart  [Part 1]
+│       │   ├── repositories/
+│       │   │   └── shipment_repository.dart  [Part 3]
+│       │   └── usecases/
+│       │       ├── get_shipments_usecase.dart  [Part 4]
+│       │       ├── get_shipment_usecase.dart  [Part 4]
+│       │       ├── create_shipment_usecase.dart  [Part 4]
+│       │       └── update_shipment_usecase.dart  [Part 4]
+│       ├── data/
+│       │   ├── dto/
+│       │   │   ├── shipment_dto.dart  [Part 1]
+│       │   │   └── auth_response_dto.dart  [Part 1]
+│       │   └── repositories/
+│       │       └── shipment_repository_impl.dart  [Part 3]
+│       └── presentation/
+│           ├── bloc/
+│           │   ├── shipment_state.dart  [Part 5]
+│           │   └── shipment_cubit.dart  [Part 5]
+│           ├── pages/
+│           │   └── shipment_list_page.dart  [Part 5]
+│           └── widgets/
+│               └── shipment_card.dart  [Part 10]
+├── app/
+│   ├── di/
+│   │   └── injection_container.dart  [Part 10/11]
+│   ├── router/
+│   │   └── app_router.dart  [Part 5]
+│   └── app.dart  [Part 10/11]
+└── main.dart  [Part 6/10/11]
+
+test/
+├── domain/
+│   └── usecases/
+│       ├── get_users_usecase_test.dart  [Part 7]
+│       └── get_shipments_usecase_test.dart  [Part 7]
+├── data/
+│   └── repositories/
+│       ├── user_repository_impl_test.dart  [Part 7]
+│       └── shipment_repository_impl_test.dart  [Part 7]
+└── presentation/
+    ├── bloc/
+    │   ├── user_cubit_test.dart  [Part 7]
+    │   └── shipment_cubit_test.dart  [Part 7]
+    └── pages/
+        ├── user_list_page_test.dart  [Part 7]
+        └── shipment_list_page_test.dart  [Part 7]
+```
+
+## Careful corrections
+- `app_router.dart` belongs in `lib/app/router/app_router.dart`, not under `presentation/router`.  
+- `user_dto.dart` was listed in the schedule, but it was **not actually written** earlier.  
+- `user_card.dart`, `shipment_card.dart`, `app.dart`, and `injection_container.dart` were written later in Parts 10 and 11.  
+
+## Consistent build order
+1. Part 1: entities and DTOs.
+2. Part 2: core utilities and shared widgets.
+3. Part 3: repositories.
+4. Part 4: use cases.
+5. Part 5: blocs, states, pages.
+6. Part 6: main bootstrap.
+7. Part 7: tests.
+8. Part 8: full folder structure.
+9. Part 9: checklist.
+10. Part 10: missing widgets and DI files.
+11. Part 11: final corrections and app completion.
+
+This is the cleanest accurate map of everything we built.
+
+Sources

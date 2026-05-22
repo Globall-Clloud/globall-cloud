@@ -1,0 +1,86 @@
+Here is the **corrected schedule with part names and code scope**, carefully aligned so there are no structural mistakes. The feature-first layout keeps each feature self-contained, while shared and app-level code stay outside the feature folders.[1][2][3]
+
+## Part 1 — Core models
+**Code:**
+- `lib/features/users/domain/entities/user_entity.dart`
+- `lib/features/shipments/domain/entities/shipment_entity.dart`
+- `lib/features/shipments/data/dto/shipment_dto.dart`
+- `lib/features/shipments/data/dto/auth_response_dto.dart`
+
+## Part 2 — Shared utilities
+**Code:**
+- `lib/core/utils/validators.dart`
+- `lib/core/constants/app_constants.dart`
+- `lib/core/errors/failures.dart`
+- `lib/core/theme/app_theme.dart`
+- `lib/shared/widgets/primary_button.dart`
+- `lib/shared/widgets/error_widget.dart`
+- `lib/shared/widgets/loading_widget.dart`
+
+## Part 3 — User and shipment repositories
+**Code:**
+- `lib/features/users/domain/repositories/user_repository.dart`
+- `lib/features/shipments/domain/repositories/shipment_repository.dart`
+- `lib/features/users/data/repositories/user_repository_impl.dart`
+- `lib/features/shipments/data/repositories/shipment_repository_impl.dart`
+
+## Part 4 — Use cases
+**Code:**
+- `lib/features/users/domain/usecases/get_users_usecase.dart`
+- `lib/features/users/domain/usecases/get_user_usecase.dart`
+- `lib/features/users/domain/usecases/update_user_usecase.dart`
+- `lib/features/shipments/domain/usecases/get_shipments_usecase.dart`
+- `lib/features/shipments/domain/usecases/get_shipment_usecase.dart`
+- `lib/features/shipments/domain/usecases/create_shipment_usecase.dart`
+- `lib/features/shipments/domain/usecases/update_shipment_usecase.dart`
+
+## Part 5 — Presentation states and blocs
+**Code:**
+- `lib/features/users/presentation/bloc/user_state.dart`
+- `lib/features/users/presentation/bloc/user_cubit.dart`
+- `lib/features/shipments/presentation/bloc/shipment_state.dart`
+- `lib/features/shipments/presentation/bloc/shipment_cubit.dart`
+
+## Part 6 — Pages and widgets
+**Code:**
+- `lib/features/users/presentation/pages/user_list_page.dart`
+- `lib/features/users/presentation/widgets/user_card.dart`
+- `lib/features/shipments/presentation/pages/shipment_list_page.dart`
+- `lib/features/shipments/presentation/widgets/shipment_card.dart`
+
+## Part 7 — App wiring
+**Code:**
+- `lib/app/di/injection_container.dart`
+- `lib/app/app.dart`
+- `lib/presentation/router/app_router.dart`
+- `lib/main.dart`
+
+## Part 8 — Tests
+**Code:**
+- `test/domain/usecases/get_users_usecase_test.dart`
+- `test/domain/usecases/get_shipments_usecase_test.dart`
+- `test/data/repositories/user_repository_impl_test.dart`
+- `test/data/repositories/shipment_repository_impl_test.dart`
+- `test/presentation/bloc/user_cubit_test.dart`
+- `test/presentation/bloc/shipment_cubit_test.dart`
+- `test/presentation/pages/user_list_page_test.dart`
+- `test/presentation/pages/shipment_list_page_test.dart`
+
+## Important correction
+The earlier schedule mixed a few paths. The safest consistent structure is:
+- `features/.../domain` for entities, repositories, and use cases.
+- `features/.../data` for DTOs and repository implementations.
+- `features/.../presentation` for blocs, pages, and widgets.
+- `app/` for DI and app bootstrap.
+- `core/` and `shared/` for reusable app-wide utilities.[2][4][1]
+
+One more correction: `app_router.dart` should be inside `lib/app/router/app_router.dart`, not under `lib/presentation/router/`.[3][5]
+
+Would you like me to turn this into a **final exact folder tree with file names and the part number beside each one**?
+
+Sources
+[1] Flutter Clean Architecture - Fast Feature-First Setup Guide https://dev.to/shanshaji/flutter-clean-architecture-fast-feature-first-setup-guide-342l
+[2] Clean Architecture in Flutter: Principles, Layers & Best Practices https://leancode.co/glossary/clean-architecture-in-flutter
+[3] Flutter Clean Architecture [1]: An Overview & Project Structure https://dev.to/marwamejri/flutter-clean-architecture-1-an-overview-project-structure-4bhf
+[4] Feature-First Clean Architecture for Flutter - Mediummedium.com › feature-first-clean-architecture-for-flutter-246366e71c18 https://medium.com/@remy.baudet/feature-first-clean-architecture-for-flutter-246366e71c18
+[5] GitHub - AndreyDAraya/flutter-clean-architecture: A structure to Flutter based on Clean Architecture https://github.com/AndreyDAraya/flutter-clean-architecture
