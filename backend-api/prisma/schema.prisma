@@ -1,0 +1,359 @@
+// =====================================================
+// Global Cloud - Logistics System Database Schema
+// =====================================================
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// =====================================================
+// 1. USERS - بەکارهێنەران (Admin, Staff, Customers)
+// =====================================================
+model User {
+  id            String    @id @default(uuid())
+  phone         String    @unique
+  email         String?   @unique
+  passwordHash  String    @map("password_hash")
+  fullName      String    @map("full_name")
+  language      Language  @default(KU)
+  role          UserRole  @default(CUSTOMER)
+  status        UserStatus @default(ACTIVE)
+  avatar        String?
+  lastLoginAt   DateTime? @map("last_login_at")
+  createdAt     DateTime  @default(now()) @map("created_at")
+  updatedAt     DateTime  @updatedAt @map("updated_at")
+
+  // Relations
+  customer      Customer?
+  staff         Staff?
+  notifications Notification[]
+  sessions      Session[]
+
+  @@map("users")
+}
+
+// =====================================================
+// 2. CUSTOMERS - کڕیارەکان (GC-XXX)
+// =====================================================
+model Customer {
+  id              String    @id @default(uuid())
+  userId          String    @unique @map("user_id")
+  customerCode    String    @unique @map("customer_code") // GC-156
+  businessName    String?   @map("business_name")
+  address         String?
+  city            String?
+  balance         Decimal   @default(0) @db.Decimal(12, 2)
+  totalShipments  Int       @default(0) @map("total_shipments")
+  createdAt       DateTime  @default(now()) @map("created_at")
+  updatedAt       DateTime  @updatedAt @map("updated_at")
+
+  // Relations
+  user            User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  shipments       Shipment[]
+  payments        Payment[]
+
+  @@map("customers")
+}
+
+// =====================================================
+// 3. STAFF - کارمەندان
+// =====================================================
+model Staff {
+  id          String      @id @default(uuid())
+  userId      String      @unique @map("user_id")
+  employeeId  String      @unique @map("employee_id") // EMP-001
+  branch      Branch      // ERBIL, CHINA, DUBAI
+  position    String      // Manager, Warehouse, Delivery
+  salary      Decimal?    @db.Decimal(10, 2)
+  createdAt   DateTime    @default(now()) @map("created_at")
+  updatedAt   DateTime    @updatedAt @map("updated_at")
+
+  // Relations
+  user              User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  processedShipments Shipment[] @relation("ProcessedBy")
+  deliveredShipments Shipment[] @relation("DeliveredBy")
+
+  @@map("staff")
+}
+
+// =====================================================
+// 4. SHIPMENTS - بارەکان
+// =====================================================
+model Shipment {
+  id                String          @id @default(uuid())
+  trackingNumber    String          @unique @map("tracking_number") // GC-156-1016
+  customerId        String          @map("customer_id")
+  
+  // Origin & Destination
+  originCountry     OriginCountry   @map("origin_country") // CHINA, UAE
+  originCity        String          @map("origin_city")
+  destinationCity   String          @map("destination_city") // Erbil, Baghdad
+  
+  // Shipping Details
+  shippingType      ShippingType    @map("shipping_type") // AIR, SEA, LAND
+  status            ShipmentStatus  @default(PENDING)
+  
+  // Measurements
+  weightKg          Decimal         @map("weight_kg") @db.Decimal(10, 2)
+  volumeCbm         Decimal?        @map("volume_cbm") @db.Decimal(10, 3)
+  boxesCount        Int             @default(1) @map("boxes_count")
+  
+  // Financial
+  shippingCost      Decimal         @map("shipping_cost") @db.Decimal(12, 2)
+  customsFee        Decimal         @default(0) @map("customs_fee") @db.Decimal(12, 2)
+  totalCost         Decimal         @map("total_cost") @db.Decimal(12, 2)
+  currency          Currency        @default(USD)
+  paymentStatus     PaymentStatus   @default(UNPAID) @map("payment_status")
+  
+  // Staff
+  processedById     String?         @map("processed_by_id")
+  deliveredById     String?         @map("delivered_by_id")
+  
+  // Delivery Proof (وێنەی کاتی گەیاندن)
+  deliveryPhoto     String?         @map("delivery_photo")
+  deliveryNotes     String?         @map("delivery_notes")
+  deliveredAt       DateTime?       @map("delivered_at")
+  receivedBy        String?         @map("received_by") // ناوی وەرگر
+  
+  // Timestamps
+  createdAt         DateTime        @default(now()) @map("created_at")
+  updatedAt         DateTime        @updatedAt @map("updated_at")
+
+  // Relations
+  customer          Customer        @relation(fields: [customerId], references: [id])
+  processedBy       Staff?          @relation("ProcessedBy", fields: [processedById], references: [id])
+  deliveredBy       Staff?          @relation("DeliveredBy", fields: [deliveredById], references: [id])
+  cargoItems        CargoItem[]
+  trackingHistory   TrackingHistory[]
+  payments          Payment[]
+  photos            ShipmentPhoto[]
+
+  @@index([customerId])
+  @@index([trackingNumber])
+  @@index([status])
+  @@map("shipments")
+}
+
+// =====================================================
+// 5. CARGO ITEMS - کاڵاکانی ناو بار
+// =====================================================
+model CargoItem {
+  id          String    @id @default(uuid())
+  shipmentId  String    @map("shipment_id")
+  description String
+  quantity    Int       @default(1)
+  weight      Decimal?  @db.Decimal(10, 2)
+  price       Decimal?  @db.Decimal(12, 2)
+  createdAt   DateTime  @default(now()) @map("created_at")
+
+  shipment    Shipment  @relation(fields: [shipmentId], references: [id], onDelete: Cascade)
+
+  @@map("cargo_items")
+}
+
+// =====================================================
+// 6. TRACKING HISTORY - مێژووی شوێنکەوتن
+// =====================================================
+model TrackingHistory {
+  id          String          @id @default(uuid())
+  shipmentId  String          @map("shipment_id")
+  status      ShipmentStatus
+  location    String?
+  notes       String?
+  createdAt   DateTime        @default(now()) @map("created_at")
+
+  shipment    Shipment        @relation(fields: [shipmentId], references: [id], onDelete: Cascade)
+
+  @@index([shipmentId])
+  @@map("tracking_history")
+}
+
+// =====================================================
+// 7. SHIPMENT PHOTOS - وێنەکانی بار
+// =====================================================
+model ShipmentPhoto {
+  id          String      @id @default(uuid())
+  shipmentId  String      @map("shipment_id")
+  photoUrl    String      @map("photo_url")
+  photoType   PhotoType   @map("photo_type") // WAREHOUSE, DELIVERY, DAMAGE
+  caption     String?
+  uploadedAt  DateTime    @default(now()) @map("uploaded_at")
+
+  shipment    Shipment    @relation(fields: [shipmentId], references: [id], onDelete: Cascade)
+
+  @@map("shipment_photos")
+}
+
+// =====================================================
+// 8. PAYMENTS - پارەدانەکان
+// =====================================================
+model Payment {
+  id              String          @id @default(uuid())
+  paymentCode     String          @unique @map("payment_code") // PAY-2024-001
+  shipmentId      String?         @map("shipment_id")
+  customerId      String          @map("customer_id")
+  amount          Decimal         @db.Decimal(12, 2)
+  currency        Currency        @default(USD)
+  paymentMethod   PaymentMethod   @map("payment_method") // FIB, QI_CARD, CASH
+  transactionId   String?         @map("transaction_id")
+  status          PaymentStatus   @default(PENDING)
+  paidAt          DateTime?       @map("paid_at")
+  notes           String?
+  createdAt       DateTime        @default(now()) @map("created_at")
+  updatedAt       DateTime        @updatedAt @map("updated_at")
+
+  // Relations
+  customer        Customer        @relation(fields: [customerId], references: [id])
+  shipment        Shipment?       @relation(fields: [shipmentId], references: [id])
+
+  @@index([customerId])
+  @@index([status])
+  @@map("payments")
+}
+
+// =====================================================
+// 9. NOTIFICATIONS - ئاگادارکردنەوەکان
+// =====================================================
+model Notification {
+  id          String              @id @default(uuid())
+  userId      String              @map("user_id")
+  title       String
+  message     String
+  type        NotificationType
+  data        Json?               // Extra data (shipment_id, etc)
+  isRead      Boolean             @default(false) @map("is_read")
+  createdAt   DateTime            @default(now()) @map("created_at")
+
+  user        User                @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([isRead])
+  @@map("notifications")
+}
+
+// =====================================================
+// 10. SESSIONS - چالاکی چوونەژوورەوە
+// =====================================================
+model Session {
+  id          String    @id @default(uuid())
+  userId      String    @map("user_id")
+  token       String    @unique
+  deviceInfo  String?   @map("device_info")
+  ipAddress   String?   @map("ip_address")
+  expiresAt   DateTime  @map("expires_at")
+  createdAt   DateTime  @default(now()) @map("created_at")
+
+  user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([token])
+  @@map("sessions")
+}
+
+// =====================================================
+// 11. SETTINGS - ڕێکخستنەکانی سیستەم
+// =====================================================
+model Setting {
+  id          String    @id @default(uuid())
+  key         String    @unique
+  value       String
+  category    String    @default("general")
+  updatedAt   DateTime  @updatedAt @map("updated_at")
+
+  @@map("settings")
+}
+
+// =====================================================
+// ENUMS - جۆرەکان
+// =====================================================
+
+enum Language {
+  KU  // Kurdish
+  AR  // Arabic
+  EN  // English
+}
+
+enum UserRole {
+  SUPER_ADMIN
+  ADMIN
+  STAFF
+  CUSTOMER
+}
+
+enum UserStatus {
+  ACTIVE
+  INACTIVE
+  BLOCKED
+}
+
+enum Branch {
+  ERBIL
+  CHINA
+  DUBAI
+}
+
+enum OriginCountry {
+  CHINA
+  UAE
+}
+
+enum ShippingType {
+  AIR      // ئاسمانی
+  SEA      // دەریایی
+  LAND     // وشکانی
+  EXPRESS  // خێرا
+}
+
+enum ShipmentStatus {
+  PENDING           // چاوەڕوانی
+  RECEIVED_ORIGIN   // گەیشتە کۆگای دەرەوە
+  IN_TRANSIT        // لە ڕێگادایە
+  ARRIVED_IRAQ      // گەیشتە عێراق
+  IN_WAREHOUSE      // لە کۆگا
+  OUT_FOR_DELIVERY  // چوونەدەرەوە بۆ گەیاندن
+  DELIVERED         // گەیشت
+  CANCELLED         // هەڵوەشێنراوە
+  RETURNED          // گەڕێنراوەتەوە
+}
+
+enum Currency {
+  USD
+  IQD
+  AED
+  CNY
+}
+
+enum PaymentStatus {
+  UNPAID
+  PENDING
+  PAID
+  PARTIAL
+  REFUNDED
+  FAILED
+}
+
+enum PaymentMethod {
+  FIB           // First Iraqi Bank
+  QI_CARD       // Qi Card
+  CASH          // نەقد
+  BANK_TRANSFER // گواستنەوەی بانکی
+}
+
+enum PhotoType {
+  WAREHOUSE   // لە کۆگا
+  DELIVERY    // کاتی گەیاندن
+  DAMAGE      // زیانلێکەوتوو
+  DOCUMENT    // بەڵگە
+}
+
+enum NotificationType {
+  SHIPMENT_UPDATE
+  PAYMENT_RECEIVED
+  DELIVERY_CONFIRMED
+  GENERAL
+  PROMOTION
+}
