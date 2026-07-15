@@ -1,10 +1,6 @@
-- buildCommand: cd admin-panel && npm run build ✅
-- outputDirectory: admin-panel/dist ✅  
-- rewrites: SPA routing ✅
-
 {
   "buildCommand": "cd admin-panel && npm run build",
-  "outputDirectory": "admin-panel/dist",
+  "outputDirectory": "admin-panel/build",
   "rewrites": [
     {
       "source": "/(.*)",
@@ -12,3 +8,4 @@
     }
   ]
 }
+
