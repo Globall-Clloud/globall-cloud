@@ -1,43 +1,35 @@
 version: 2
 updates:
-  # npm packageکان
-  - package-ecosystem: "npm"
-    directory: "/"
+  # 1. بۆ ئەدمین پانێڵ - React
+    - package-ecosystem: "npm"
+    directory: "/admin-panel"
     schedule:
       interval: "weekly"
       day: "monday"
       time: "03:00"
     open-pull-requests-limit: 5
     reviewers:
-      - "ali-owner"
+            - "AliBlbas"
     commit-message:
       prefix: "chore(deps):"
-    pull-request-branch-name:
-      separator: "/"
 
-  # GitHub Actions
-  - package-ecosystem: "github-actions"
+  # 2. بۆ باکێند - API
+    - package-ecosystem: "npm"
+    directory: "/backend-api"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "03:00"
+    open-pull-requests-limit: 5
+    reviewers:
+            - "AliBlbas"
+    commit-message:
+      prefix: "chore(deps):"
+
+  # 3. بۆ GitHub Actions
+    - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
       interval: "weekly"
       day: "wednesday"
     open-pull-requests-limit: 3
-
-  # Docker (ئەگەر هەبوو)
-  - package-ecosystem: "docker"
-    directory: "/"
-    schedule:
-      interval: "weekly"
-    open-pull-requests-limit: 2
-
-# To get started with Dependabot version updates, you'll need to specify which
-# package ecosystems to update and where the package manifests are located.
-# Please see the documentation for all configuration options:
-# https://docs.github.com/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file
-
-version: 2
-updates:
-  - package-ecosystem: "" # See documentation for possible values
-    directory: "/" # Location of package manifests
-    schedule:
-      interval: "weekly"
