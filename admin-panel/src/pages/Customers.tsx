@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Table, Button, Space, Tag, Input, Card, Modal, Form, message } from 'antd';
+import { Table, Button, Space, Tag, Input, Card, Modal, Form, message, Popconfirm } from 'antd';
 import { SearchOutlined, PlusOutlined, EditOutlined, DeleteOutlined } from '@ant-design/icons';
 import { useTranslation } from 'react-i18next';
 
@@ -11,6 +11,7 @@ const Customers = () => {
     { id: 3, code: 'GC-003', name: 'فاطمة أحمد', phone: '+9647500000003', email: 'fatima@example.com', location: 'Sulaymaniyah', status: 'inactive' }
   ]);
   const [modalVisible, setModalVisible] = useState(false);
+  const [editingCustomer, setEditingCustomer] = useState<any>(null);
   const [form] = Form.useForm();
 
   const columns = [
@@ -32,19 +33,45 @@ const Customers = () => {
     {
       title: t('action'),
       key: 'action',
-      render: () => (
+      render: (_: unknown, record: any) => (
         <Space>
-          <Button icon={<EditOutlined />} type="primary" size="small" />
-          <Button icon={<DeleteOutlined />} danger size="small" />
+          <Button icon={<EditOutlined />} type="primary" size="small" onClick={() => handleEditCustomer(record)} />
+          <Popconfirm title="Delete customer?" onConfirm={() => handleDeleteCustomer(record.id)}>
+            <Button icon={<DeleteOutlined />} danger size="small" />
+          </Popconfirm>
         </Space>
       )
     }
   ];
 
-  const handleAddCustomer = () => {
+  const openAddCustomer = () => {
+    setEditingCustomer(null);
+    form.resetFields();
+    setModalVisible(true);
+  };
+
+  const handleEditCustomer = (customer: any) => {
+    setEditingCustomer(customer);
+    form.setFieldsValue(customer);
+    setModalVisible(true);
+  };
+
+  const handleDeleteCustomer = (id: number) => {
+    setCustomers(customers.filter(customer => customer.id !== id));
+    message.success('Customer deleted');
+  };
+
+  const handleSaveCustomer = () => {
     form.validateFields().then(values => {
-      message.success('Customer added successfully!');
+      if (editingCustomer) {
+        setCustomers(customers.map(customer => customer.id === editingCustomer.id ? { ...customer, ...values } : customer));
+        message.success('Customer updated');
+      } else {
+        setCustomers([...customers, { id: Date.now(), code: `GC-${String(customers.length + 1).padStart(3, '0')}`, status: 'active', ...values }]);
+        message.success('Customer added successfully');
+      }
       setModalVisible(false);
+      setEditingCustomer(null);
       form.resetFields();
     });
   };
@@ -53,7 +80,7 @@ const Customers = () => {
     <Card
       title={`👥 ${t('customers')}`}
       extra={
-        <Button type="primary" icon={<PlusOutlined />} onClick={() => setModalVisible(true)}>
+        <Button type="primary" icon={<PlusOutlined />} onClick={openAddCustomer}>
           {t('addCustomer')}
         </Button>
       }
@@ -66,10 +93,10 @@ const Customers = () => {
       <Table columns={columns} dataSource={customers} rowKey="id" />
 
       <Modal
-        title={t('addCustomer')}
+        title={editingCustomer ? t('editCustomer') : t('addCustomer')}
         open={modalVisible}
-        onOk={handleAddCustomer}
-        onCancel={() => setModalVisible(false)}
+        onOk={handleSaveCustomer}
+        onCancel={() => { setModalVisible(false); setEditingCustomer(null); form.resetFields(); }}
       >
         <Form form={form} layout="vertical">
           <Form.Item label={t('name')} name="name" rules={[{ required: true }]}>

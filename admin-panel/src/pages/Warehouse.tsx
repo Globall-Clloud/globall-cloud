@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Tabs, Table } from 'antd';
+import { Card, Table } from 'antd';
 import { useTranslation } from 'react-i18next';
 
 const Warehouse = () => {
