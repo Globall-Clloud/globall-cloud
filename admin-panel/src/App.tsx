@@ -222,6 +222,19 @@ function AdminApp({ session, onLogout, themeMode, onThemeToggle }: { session: Se
         />
       </Sider>
       <Layout>
+        <div className="mobile-top-brand">
+          <img src="/global-cloud-logo.svg" alt="Globall Cloud" />
+          <div>
+            <strong>Globall Cloud</strong>
+            <span>الفيوم العالمية</span>
+          </div>
+          <Switch
+            checked={themeMode === 'dark'}
+            onChange={onThemeToggle}
+            checkedChildren={<MoonOutlined />}
+            unCheckedChildren={<BulbOutlined />}
+          />
+        </div>
         <Header className="header glass-header">
           <Space>
             <Button
