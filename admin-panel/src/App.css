@@ -1165,3 +1165,83 @@ body {
     font-size: 9px;
   }
 }
+
+/* Mobile blank-screen fix: keep the brand bar small and let page content render. */
+@media (max-width: 768px) {
+  .main-layout.app-theme-dark,
+  .main-layout.app-theme-light,
+  .main-layout {
+    min-height: 100dvh;
+    background: #f4f8fc;
+  }
+
+  .app-theme-dark.main-layout {
+    background: #071a35;
+  }
+
+  .app-sidebar {
+    height: 86px !important;
+    min-height: 86px !important;
+    max-height: 86px !important;
+    flex: 0 0 86px !important;
+    overflow: hidden !important;
+  }
+
+  .app-sidebar .ant-menu {
+    display: none !important;
+  }
+
+  .premium-logo-block {
+    min-height: 86px !important;
+    height: 86px !important;
+    padding: 14px 18px !important;
+  }
+
+  .glass-header.header {
+    position: relative !important;
+    top: auto !important;
+    z-index: 6;
+    margin: 0;
+    min-height: 64px;
+    background: rgba(255, 255, 255, 0.96) !important;
+  }
+
+  .app-theme-dark .glass-header.header {
+    background: rgba(8, 23, 44, 0.96) !important;
+  }
+
+  .content-area {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    min-height: calc(100dvh - 86px - 64px - 92px) !important;
+    padding: 14px 12px 100px !important;
+    background:
+      radial-gradient(circle at top right, rgba(84, 200, 241, 0.12), transparent 34%),
+      linear-gradient(180deg, #f8fbff 0%, #eef4fb 100%) !important;
+  }
+
+  .app-theme-dark .content-area {
+    background:
+      radial-gradient(circle at top right, rgba(84, 200, 241, 0.18), transparent 34%),
+      linear-gradient(180deg, #071a35 0%, #0b1324 100%) !important;
+  }
+
+  .content-area > .page-enter,
+  .page-enter {
+    display: block !important;
+    min-height: 200px;
+  }
+
+  .premium-hero,
+  .ant-card,
+  .modern-stat-card,
+  .chart-card {
+    display: block !important;
+    visibility: visible !important;
+  }
+
+  .mobile-bottom-nav {
+    display: grid !important;
+  }
+}
