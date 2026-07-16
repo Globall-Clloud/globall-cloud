@@ -1,0 +1,113 @@
+version: 2
+groups:
+  production-critical:
+    dependency-types:
+      - "production"
+    update-types:
+      - "minor"
+      - "patch"
+
+  development:
+    dependency-types:
+      - "development"
+    update-types:
+      - "minor"
+      - "patch"
+
+updates:
+  # Admin Panel - Agile & UI Critical
+  - package-ecosystem: "npm"
+    directory: "/admin-panel"
+    schedule:
+      interval: "daily"
+      time: "02:00"
+    open-pull-requests-limit: 8
+    groups:
+      - "production-critical"
+      - "development"
+    security-updates-only: false
+    vulnerability-alerts: true
+    reviewers:
+      - "AliBlbas"
+    assignees:
+      - "AliBlbas"
+    labels:
+      - "🔄 dependencies"
+      - "👨‍💻 admin-panel"
+      - "🚨 critical"
+    commit-message:
+      prefix: "chore(admin-panel): bump"
+      include: "scope"
+    pull-request-branch-name:
+      separator: "/"
+
+  # Backend API - Stability Priority
+  - package-ecosystem: "npm"
+    directory: "/backend-api"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "03:00"
+    open-pull-requests-limit: 6
+    ignore:
+      - dependency-name: "lodash"
+      - dependency-name: "moment"
+      - dependency-name: "axios"
+        versions: ["< 1.0"]
+    security-updates-only: false
+    versioning-strategy: "increase"
+    reviewers:
+      - "AliBlbas"
+    labels:
+      - "🔄 dependencies"
+      - "🔌 backend-api"
+      - "📡 stability"
+    commit-message:
+      prefix: "chore(backend): security patches"
+      include: "scope"
+
+  # Critical Security Updates - Highest Priority
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "daily"
+      time: "00:00"
+    open-pull-requests-limit: 10
+    security-updates-only: true
+    reviewers:
+      - "AliBlbas"
+    labels:
+      - "🚨 CRITICAL"
+      - "🔐 security"
+    commit-message:
+      prefix: "security: URGENT patch"
+
+  # GitHub Actions - Workflow Integrity
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "wednesday"
+      time: "01:00"
+    open-pull-requests-limit: 5
+    reviewers:
+      - "AliBlbas"
+    labels:
+      - "🤖 ci-cd"
+      - "⚙️ workflows"
+    commit-message:
+      prefix: "ci: update actions"
+
+  # Docker - Infrastructure
+  - package-ecosystem: "docker"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "friday"
+      time: "02:00"
+    open-pull-requests-limit: 4
+    labels:
+      - "🐳 docker"
+      - "📦 infrastructure"
+    commit-message:
+      prefix: "docker: update images"

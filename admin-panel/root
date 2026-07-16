@@ -1,0 +1,11 @@
+{
+  "buildCommand": "cd admin-panel && npm run build",
+  "outputDirectory": "admin-panel/build",
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}
+

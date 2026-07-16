@@ -1,0 +1,91 @@
+/**
+ * USAGE EXAMPLE - Dashboard Stats Component
+ * 
+ * How to integrate DashboardStats into your admin panel
+ */
+
+import React, { useState } from 'react';
+import DashboardStats from './components/DashboardStats';
+
+const Dashboard: React.FC = () => {
+  // State management
+  const [language, setLanguage] = useState<'ku' | 'ar' | 'en'>('ku');
+  const [isDarkMode, setIsDarkMode] = useState(true);
+
+  return (
+    <div className="dashboard-container">
+      {/* Header with controls */}
+      <div className="dashboard-header">
+        <h1>Global Cloud - Admin Panel</h1>
+        
+        {/* Language selector */}
+        <div className="language-selector">
+          <button 
+            onClick={() => setLanguage('ku')}
+            className={language === 'ku' ? 'active' : ''}
+          >
+            کوردی
+          </button>
+          <button 
+            onClick={() => setLanguage('ar')}
+            className={language === 'ar' ? 'active' : ''}
+          >
+            عربي
+          </button>
+          <button 
+            onClick={() => setLanguage('en')}
+            className={language === 'en' ? 'active' : ''}
+          >
+            English
+          </button>
+        </div>
+
+        {/* Dark mode toggle */}
+        <button 
+          onClick={() => setIsDarkMode(!isDarkMode)}
+          className="theme-toggle"
+        >
+          {isDarkMode ? '☀️ Light' : '🌙 Dark'}
+        </button>
+      </div>
+
+      {/* Dashboard Stats Component */}
+      <DashboardStats 
+        language={language} 
+        isDarkMode={isDarkMode} 
+      />
+
+      {/* Other dashboard sections */}
+      <div className="dashboard-content">
+        {/* Add more components here */}
+      </div>
+    </div>
+  );
+};
+
+export default Dashboard;
+
+/**
+ * INSTALLATION STEPS:
+ * 
+ * 1. Copy DashboardStats.tsx to: admin-panel/src/components/
+ * 2. Copy DashboardStats.css to: admin-panel/src/components/
+ * 3. Add to your Dashboard.tsx:
+ *    
+ *    import DashboardStats from './components/DashboardStats';
+ *    
+ *    <DashboardStats language={language} isDarkMode={isDarkMode} />
+ * 
+ * 4. Features:
+ *    - Trilingual support (Kurdish/Arabic/English)
+ *    - Dark/Light theme
+ *    - Responsive design (Desktop/Tablet/Mobile)
+ *    - Glassmorphism effect
+ *    - Hover animations
+ *    - Trend indicators
+ * 
+ * 5. Customization:
+ *    - Edit stats data in DashboardStats.tsx (const stats)
+ *    - Change colors: teal, green, emerald, orange
+ *    - Adjust gap/padding in CSS
+ *    - Modify grid columns
