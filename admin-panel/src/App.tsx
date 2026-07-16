@@ -18,6 +18,9 @@ import {
   SolutionOutlined,
   TeamOutlined,
   ToolOutlined,
+  BarcodeOutlined,
+  CalculatorOutlined,
+  AimOutlined,
   UserOutlined,
   UsergroupAddOutlined,
   WhatsAppOutlined
@@ -32,6 +35,9 @@ import Warehouse from './pages/Warehouse';
 import Staff from './pages/Staff';
 import Settings from './pages/Settings';
 import Tools from './pages/Tools';
+import Parcels from './pages/Parcels';
+import LiveTracking from './pages/LiveTracking';
+import Pricing from './pages/Pricing';
 import { SpeedInsights } from '@vercel/speed-insights/react';
 import './App.css';
 
@@ -55,6 +61,9 @@ const routeMap: Record<string, string> = {
   reports: '/reports',
   warehouse: '/warehouse',
   staff: '/staff',
+  parcels: '/parcels',
+  tracking: '/tracking',
+  pricing: '/pricing',
   tools: '/tools',
   settings: '/settings'
 };
@@ -163,6 +172,9 @@ function AdminApp({ session, onLogout, themeMode, onThemeToggle }: { session: Se
     { key: 'dashboard', label: t('dashboard'), icon: <DashboardOutlined /> },
     { key: 'customers', label: t('customers'), icon: <TeamOutlined /> },
     { key: 'shipments', label: t('shipments'), icon: <ShopOutlined /> },
+    { key: 'parcels', label: 'Parcels', icon: <BarcodeOutlined /> },
+    { key: 'tracking', label: 'Live Tracking', icon: <AimOutlined /> },
+    { key: 'pricing', label: 'Pricing', icon: <CalculatorOutlined /> },
     { key: 'payments', label: t('payments'), icon: <DollarOutlined /> },
     { key: 'reports', label: t('reports'), icon: <SolutionOutlined /> },
     { key: 'warehouse', label: t('warehouse'), icon: <HomeOutlined /> },
@@ -263,6 +275,9 @@ function AdminApp({ session, onLogout, themeMode, onThemeToggle }: { session: Se
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/customers" element={<Customers />} />
             <Route path="/shipments" element={<Shipments />} />
+            <Route path="/parcels" element={<Parcels />} />
+            <Route path="/tracking" element={<LiveTracking />} />
+            <Route path="/pricing" element={<Pricing />} />
             <Route path="/payments" element={<Payments />} />
             <Route path="/reports" element={<Reports />} />
             <Route path="/warehouse" element={<Warehouse />} />
