@@ -81,13 +81,10 @@ function LoginScreen({ onLogin, themeMode, onThemeToggle }: { onLogin: (session:
       <div className="login-visual" aria-label="Global Cloud logistics branding">
         <div className="login-visual-overlay" />
         <div className="brand-mark pro-logo-wrap">
-          <div className="pro-logo">
-            <span className="pro-logo-globe">GC</span>
-            <span className="pro-logo-wing" />
-          </div>
+          <img className="brand-logo-img" src="/global-cloud-logo.svg" alt="Globall Cloud" />
           <div>
             <Text className="brand-eyebrow">Premium logistics platform</Text>
-            <Title level={1}>Global Cloud</Title>
+            <Title level={1}>Globall Cloud</Title>
             <Text className="brand-subtitle">الفيوم العالمية — Air, sea, and land operations</Text>
           </div>
         </div>
@@ -208,10 +205,10 @@ function AdminApp({ session, onLogout, themeMode, onThemeToggle }: { session: Se
     <Layout className={`main-layout app-theme-${themeMode}`}>
       <Sider trigger={null} collapsible collapsed={collapsed} width={280} className="app-sidebar">
         <div className="logo-block premium-logo-block" onClick={() => navigate('/dashboard')} role="button" tabIndex={0}>
-          <div className="pro-logo mini"><span>GC</span><i /></div>
+          <img className="sidebar-logo-img" src="/global-cloud-logo.svg" alt="Globall Cloud" />
           {!collapsed && (
             <div>
-              <Text className="logo-title">Global Cloud</Text>
+              <Text className="logo-title">Globall Cloud</Text>
               <Text className="logo-subtitle">الفيوم العالمية</Text>
             </div>
           )}

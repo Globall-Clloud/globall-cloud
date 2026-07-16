@@ -46,6 +46,15 @@ const Dashboard = () => {
         </div>
       </Card>
 
+      <Card title="How the system works" style={{ marginBottom: 18 }}>
+        <div className="system-guide-grid">
+          <div className="system-guide-card"><strong>1. Receive parcel</strong><span>Create parcel, weight, customer phone, QR/barcode label.</span></div>
+          <div className="system-guide-card"><strong>2. Route shipment</strong><span>Assign branch, courier, service, price, and customs status.</span></div>
+          <div className="system-guide-card"><strong>3. Track live</strong><span>Follow shipment timeline and map movement until delivery.</span></div>
+          <div className="system-guide-card"><strong>4. Report and sync</strong><span>Export PDF/Excel, backup data, and prepare Firebase cloud sync.</span></div>
+        </div>
+      </Card>
+
       <Row gutter={[18, 18]}>
         {kpis.map(kpi => (
           <Col xs={24} sm={12} xl={6} key={kpi.title}>
