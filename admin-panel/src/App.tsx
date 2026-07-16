@@ -32,6 +32,7 @@ import Warehouse from './pages/Warehouse';
 import Staff from './pages/Staff';
 import Settings from './pages/Settings';
 import Tools from './pages/Tools';
+import { SpeedInsights } from '@vercel/speed-insights/react';
 import './App.css';
 
 const { Header, Sider, Content } = Layout;
@@ -320,6 +321,7 @@ function App() {
           <LoginScreen onLogin={handleLogin} themeMode={themeMode} onThemeToggle={toggleTheme} />
         )}
       </Router>
+      <SpeedInsights />
     </ConfigProvider>
   );
 }
