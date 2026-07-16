@@ -284,6 +284,25 @@ function AdminApp({ session, onLogout, themeMode, onThemeToggle }: { session: Se
             <Route path="*" element={<Navigate to="/dashboard" />} />
           </Routes>
         </Content>
+        <nav className="mobile-bottom-nav" aria-label="Mobile quick navigation">
+          {[
+            { key: 'dashboard', label: 'Home', icon: <DashboardOutlined /> },
+            { key: 'parcels', label: 'Parcels', icon: <BarcodeOutlined /> },
+            { key: 'tracking', label: 'Track', icon: <AimOutlined /> },
+            { key: 'pricing', label: 'Price', icon: <CalculatorOutlined /> },
+            { key: 'tools', label: 'Tools', icon: <ToolOutlined /> }
+          ].map(item => (
+            <button
+              key={item.key}
+              className={selectedKey === item.key ? 'active' : ''}
+              onClick={() => navigate(routeMap[item.key])}
+              type="button"
+            >
+              {item.icon}
+              <span>{item.label}</span>
+            </button>
+          ))}
+        </nav>
       </Layout>
     </Layout>
   );

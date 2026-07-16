@@ -820,3 +820,348 @@ body {
     width: 128px;
   }
 }
+
+.mobile-bottom-nav {
+  display: none;
+}
+
+.table-mobile-scroll,
+.ant-table-wrapper {
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  html,
+  body,
+  #root {
+    width: 100%;
+    overflow-x: hidden;
+  }
+
+  .main-layout {
+    padding-bottom: 78px;
+  }
+
+  .app-sidebar {
+    position: sticky !important;
+    top: 0;
+    height: auto !important;
+    max-height: 112px;
+    overflow: hidden;
+  }
+
+  .app-sidebar .ant-layout-sider-children {
+    height: auto;
+  }
+
+  .premium-logo-block {
+    min-height: 58px;
+    padding: 8px 14px;
+  }
+
+  .sidebar-logo-img {
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+  }
+
+  .logo-title {
+    font-size: 15px;
+  }
+
+  .logo-subtitle {
+    font-size: 11px;
+  }
+
+  .app-sidebar .ant-menu {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 0 10px 10px !important;
+    scrollbar-width: none;
+  }
+
+  .app-sidebar .ant-menu::-webkit-scrollbar {
+    display: none;
+  }
+
+  .app-sidebar .ant-menu-item {
+    min-width: max-content;
+    height: 38px !important;
+    padding: 0 12px !important;
+    margin: 0 !important;
+    border-radius: 999px !important;
+    line-height: 38px !important;
+  }
+
+  .header.glass-header {
+    position: sticky;
+    top: 108px;
+    z-index: 8;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    min-height: 62px;
+    padding: 10px 12px;
+  }
+
+  .header .ant-space:first-child {
+    min-width: 0;
+  }
+
+  .header h4 {
+    font-size: 17px !important;
+    max-width: 150px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .page-eyebrow {
+    font-size: 10px;
+    letter-spacing: 0.06em;
+  }
+
+  .header .ant-space:last-child {
+    gap: 6px !important;
+  }
+
+  .header .ant-btn:not(.header-icon-button):not(.user-button) {
+    width: 38px;
+    padding: 0;
+  }
+
+  .header .ant-btn:not(.header-icon-button):not(.user-button) span:not(.anticon) {
+    display: none;
+  }
+
+  .content-area {
+    padding: 12px;
+    min-height: calc(100vh - 178px);
+  }
+
+  .premium-hero {
+    border-radius: 18px !important;
+    gap: 12px;
+  }
+
+  .premium-hero .ant-card-body {
+    padding: 16px !important;
+  }
+
+  .premium-hero h2 {
+    font-size: 24px !important;
+    line-height: 1.15 !important;
+  }
+
+  .modern-stat-card .ant-card-body,
+  .chart-card .ant-card-body,
+  .ant-card .ant-card-body {
+    padding: 14px;
+  }
+
+  .modern-stat-icon,
+  .tool-icon {
+    width: 44px;
+    height: 44px;
+    font-size: 20px;
+    border-radius: 14px;
+  }
+
+  .ant-statistic-content {
+    font-size: 24px !important;
+  }
+
+  .chart-card .recharts-responsive-container,
+  .recharts-responsive-container {
+    min-width: 300px;
+  }
+
+  .ant-table-wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .ant-table {
+    min-width: 680px;
+  }
+
+  .ant-card:has(.ant-table-wrapper) .ant-card-body {
+    overflow-x: auto;
+  }
+
+  .tracking-map-card,
+  .tracking-map-card .ant-card-body {
+    min-height: 360px;
+    height: 360px;
+  }
+
+  .map-pin {
+    font-size: 11px;
+    padding: 8px 10px;
+    max-width: 118px;
+    white-space: nowrap;
+  }
+
+  .pin-origin { left: 5%; top: 16%; }
+  .pin-hub { left: 38%; top: 34%; }
+  .pin-destination { right: 5%; bottom: 14%; }
+
+  .courier-dot {
+    width: 44px;
+    height: 44px;
+    font-size: 18px;
+  }
+
+  .login-shell {
+    display: block;
+    min-height: 100vh;
+  }
+
+  .login-visual {
+    min-height: 330px;
+    padding: 20px;
+  }
+
+  .brand-mark {
+    gap: 10px;
+  }
+
+  .brand-logo-img {
+    width: 108px;
+    border-radius: 20px;
+  }
+
+  .brand-mark h1 {
+    font-size: 30px !important;
+  }
+
+  .brand-subtitle {
+    font-size: 13px;
+  }
+
+  .login-feature-strip {
+    gap: 6px;
+  }
+
+  .logistics-scene {
+    height: 150px;
+  }
+
+  .scene-truck {
+    width: 112px;
+    height: 48px;
+    bottom: 24px;
+  }
+
+  .scene-ship {
+    width: 132px;
+    height: 38px;
+    bottom: 18px;
+  }
+
+  .scene-containers {
+    width: 176px;
+    height: 52px;
+    bottom: 24px;
+  }
+
+  .login-panel-wrap {
+    padding: 14px;
+  }
+
+  .login-card {
+    border-radius: 22px !important;
+  }
+
+  .login-card .ant-card-body {
+    padding: 20px;
+  }
+
+  .login-card-head {
+    align-items: center;
+  }
+
+  .language-row .ant-btn {
+    flex: 1 1 30%;
+  }
+
+  .system-guide-grid {
+    gap: 10px;
+  }
+
+  .system-guide-card {
+    padding: 12px;
+  }
+
+  .mobile-bottom-nav {
+    position: fixed;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    z-index: 30;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 4px;
+    padding: 8px;
+    border-radius: 24px;
+    background: rgba(7, 26, 53, 0.88);
+    border: 1px solid rgba(84, 200, 241, 0.22);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.32);
+    backdrop-filter: blur(18px);
+  }
+
+  .mobile-bottom-nav button {
+    border: 0;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.72);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    min-height: 48px;
+    border-radius: 16px;
+    font-size: 10px;
+    font-weight: 700;
+  }
+
+  .mobile-bottom-nav button .anticon {
+    font-size: 18px;
+  }
+
+  .mobile-bottom-nav button.active {
+    color: white;
+    background: linear-gradient(135deg, var(--gc-blue), var(--gc-cyan));
+  }
+}
+
+@media (max-width: 420px) {
+  .content-area {
+    padding: 10px;
+  }
+
+  .premium-hero h2 {
+    font-size: 21px !important;
+  }
+
+  .ant-card-head-title {
+    font-size: 15px;
+  }
+
+  .header h4 {
+    max-width: 118px;
+  }
+
+  .mobile-bottom-nav {
+    left: 6px;
+    right: 6px;
+    bottom: 6px;
+    border-radius: 20px;
+  }
+
+  .mobile-bottom-nav button {
+    min-height: 44px;
+    font-size: 9px;
+  }
+}
