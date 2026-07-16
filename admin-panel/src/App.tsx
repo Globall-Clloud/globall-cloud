@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import { Layout, Menu, Select, Button, Dropdown, Space, Badge } from 'antd';
+import { Layout, Menu, Button, Dropdown, Space, Badge, Spin } from 'antd';
 import { MenuFoldOutlined, MenuUnfoldOutlined, BellOutlined, UserOutlined, LogoutOutlined, GlobalOutlined } from '@ant-design/icons';
 import { useTranslation } from 'react-i18next';
+import { AuthProvider, useAuth } from './context/AuthContext';
+import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 import Customers from './pages/Customers';
 import Shipments from './pages/Shipments';
@@ -15,10 +17,10 @@ import './App.css';
 
 const { Header, Sider, Content } = Layout;
 
-function App() {
+function AdminLayout() {
   const [collapsed, setCollapsed] = useState(false);
   const { t, i18n } = useTranslation();
-  const [userRole] = useState('SUPER_ADMIN');
+  const { user, logout } = useAuth();
 
   const menuItems = [
     { key: 'dashboard', label: t('dashboard'), icon: '📊' },
@@ -42,13 +44,19 @@ function App() {
   };
 
   const userMenuItems = [
-    { key: '1', label: 'Profile', icon: <UserOutlined /> },
-    { key: '2', label: t('logout'), icon: <LogoutOutlined /> }
+    { key: 'profile', label: 'Profile', icon: <UserOutlined /> },
+    { key: 'logout', label: t('logout'), icon: <LogoutOutlined /> }
   ];
+
+  const onUserMenuClick = ({ key }: { key: string }) => {
+    if (key === 'logout') {
+      logout();
+    }
+  };
 
   return (
     <Router>
-      <Layout className="main-layout">
+      <Layout className="main-layout" style={{ minHeight: '100vh' }}>
         <Sider trigger={null} collapsible collapsed={collapsed} width={250}>
           <div className="logo" style={{ padding: '16px', textAlign: 'center', color: 'white', fontSize: '18px', fontWeight: 'bold' }}>
             {!collapsed && '🌐 Globall Cloud'}
@@ -78,8 +86,8 @@ function App() {
               <Badge count={5}>
                 <Button icon={<BellOutlined />} />
               </Badge>
-              <Dropdown menu={{ items: userMenuItems }}>
-                <Button icon={<UserOutlined />}>{userRole}</Button>
+              <Dropdown menu={{ items: userMenuItems, onClick: onUserMenuClick }}>
+                <Button icon={<UserOutlined />}>{user?.name || user?.role || 'User'}</Button>
               </Dropdown>
             </Space>
           </Header>
@@ -100,6 +108,28 @@ function App() {
         </Layout>
       </Layout>
     </Router>
+  );
+}
+
+function AppContent() {
+  const { isAuthenticated, loading } = useAuth();
+
+  if (loading) {
+    return (
+      <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <Spin size="large" />
+      </div>
+    );
+  }
+
+  return isAuthenticated ? <AdminLayout /> : <Login />;
+}
+
+function App() {
+  return (
+    <AuthProvider>
+      <AppContent />
+    </AuthProvider>
   );
 }
 

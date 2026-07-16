@@ -1,5 +1,6 @@
 import React from 'react';
-import { Card, Row, Col, Statistic, Table, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { Card, Row, Col, Statistic, Table } from 'antd';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { UserOutlined, ShoppingCartOutlined, DollarOutlined, RiseOutlined } from '@ant-design/icons';
 import { useTranslation } from 'react-i18next';
 
