@@ -14,7 +14,7 @@ import { firebaseReadyModules, firebaseSetupNote } from '../firebaseReady';
 
 const { Text, Title } = Typography;
 
-const SUPPORT_PHONE = '';
+const SUPPORT_PHONE = '9647507577137';
 
 const toolCards = [
   { title: 'QR Code', icon: <QrcodeOutlined />, color: '#1267a8', text: 'Generate package QR labels and customer shipment codes.' },

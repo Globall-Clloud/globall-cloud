@@ -36,7 +36,7 @@ import './App.css';
 
 const { Header, Sider, Content } = Layout;
 const { Text, Title } = Typography;
-const SUPPORT_PHONE = '';
+const SUPPORT_PHONE = '9647507577137';
 
 type Session = {
   name: string;
@@ -118,7 +118,7 @@ function LoginScreen({ onLogin, themeMode, onThemeToggle }: { onLogin: (session:
                 <Input size="large" prefix={<UserOutlined />} placeholder="Ali Blbas" />
               </Form.Item>
               <Form.Item label="Mobile / WhatsApp" name="phone">
-                <Input size="large" prefix={<WhatsAppOutlined />} placeholder="Send me your number to connect WhatsApp" />
+                <Input size="large" prefix={<WhatsAppOutlined />} placeholder="+9647507577137" />
               </Form.Item>
               <Form.Item label="Password" name="password" rules={[{ required: true, message: 'Enter your password' }]} initialValue="globalcloud">
                 <Input.Password size="large" prefix={<LockOutlined />} placeholder="Password" />
