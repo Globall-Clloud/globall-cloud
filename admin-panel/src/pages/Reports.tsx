@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Row, Col, Button, Select } from 'antd';
+import { Card, Row, Col, Button, Select, message } from 'antd';
 import { DownloadOutlined } from '@ant-design/icons';
 import { useTranslation } from 'react-i18next';
 
@@ -18,7 +18,7 @@ const Reports = () => {
             </Select>
           </Col>
           <Col xs={24} sm={12}>
-            <Button type="primary" icon={<DownloadOutlined />} block>
+            <Button type="primary" icon={<DownloadOutlined />} block onClick={() => message.success('Report export prepared')}>
               Export as PDF
             </Button>
           </Col>
