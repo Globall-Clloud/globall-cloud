@@ -23,7 +23,7 @@ const Settings = () => {
           </Col>
           <Col xs={24} sm={12}>
             <Form.Item label="Email" name="email" rules={[{ required: true }]}>
-              <Input defaultValue="info@globallcloud.com" />
+              <Input defaultValue="tamanblbas271@gmail.com" />
             </Form.Item>
           </Col>
         </Row>
