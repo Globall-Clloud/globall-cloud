@@ -38,12 +38,15 @@ import Tools from './pages/Tools';
 import Parcels from './pages/Parcels';
 import LiveTracking from './pages/LiveTracking';
 import Pricing from './pages/Pricing';
+import Landing from './pages/Landing';
+import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/react';
 import './App.css';
 
 const { Header, Sider, Content } = Layout;
 const { Text, Title } = Typography;
 const SUPPORT_PHONE = '9647507577137';
+const ADMIN_PASSWORD = process.env.REACT_APP_ADMIN_PASSWORD || 'globalcloud';
 
 type Session = {
   name: string;
@@ -71,7 +74,12 @@ const routeMap: Record<string, string> = {
 function LoginScreen({ onLogin, themeMode, onThemeToggle }: { onLogin: (session: Session) => void; themeMode: ThemeMode; onThemeToggle: () => void }) {
   const { i18n } = useTranslation();
 
-  const handleLogin = (values: { username: string; phone?: string }) => {
+  const handleLogin = (values: { username: string; phone?: string; password: string }) => {
+    if (values.password !== ADMIN_PASSWORD) {
+      message.error('Password is incorrect');
+      return;
+    }
+
     onLogin({ name: values.username || 'Ali Blbas', role: 'Founder & CEO', phone: values.phone || SUPPORT_PHONE });
     message.success('Welcome back, boss');
   };
@@ -127,8 +135,8 @@ function LoginScreen({ onLogin, themeMode, onThemeToggle }: { onLogin: (session:
               <Form.Item label="Mobile / WhatsApp" name="phone">
                 <Input size="large" prefix={<WhatsAppOutlined />} placeholder="+9647507577137" />
               </Form.Item>
-              <Form.Item label="Password" name="password" rules={[{ required: true, message: 'Enter your password' }]} initialValue="globalcloud">
-                <Input.Password size="large" prefix={<LockOutlined />} placeholder="Password" />
+              <Form.Item label="Password" name="password" rules={[{ required: true, message: 'Enter your password' }]}>
+                <Input.Password size="large" prefix={<LockOutlined />} placeholder="Enter admin password" />
               </Form.Item>
               <Button type="primary" size="large" htmlType="submit" block className="login-button">
                 Enter premium dashboard
@@ -321,6 +329,24 @@ function AdminApp({ session, onLogout, themeMode, onThemeToggle }: { session: Se
   );
 }
 
+function PublicTracking() {
+  return (
+    <main className="public-tool-page">
+      <div className="public-tool-header">
+        <div className="landing-brand">
+          <img src="/global-cloud-logo.svg" alt="Globall Cloud" />
+          <div>
+            <strong>Globall Cloud</strong>
+            <span>الفيوم العالمية</span>
+          </div>
+        </div>
+        <Button type="primary" href="/login">Admin login</Button>
+      </div>
+      <LiveTracking />
+    </main>
+  );
+}
+
 function App() {
   const [themeMode, setThemeMode] = useState<ThemeMode>(() => (window.localStorage.getItem('global-cloud-theme') as ThemeMode) || 'light');
   const [session, setSession] = useState<Session | null>(() => {
@@ -359,12 +385,41 @@ function App() {
       }}
     >
       <Router>
-        {session ? (
-          <AdminApp session={session} onLogout={handleLogout} themeMode={themeMode} onThemeToggle={toggleTheme} />
-        ) : (
-          <LoginScreen onLogin={handleLogin} themeMode={themeMode} onThemeToggle={toggleTheme} />
-        )}
+        <Routes>
+          <Route path="/" element={<Landing />} />
+          <Route
+            path="/login"
+            element={
+              session ? (
+                <Navigate to="/dashboard" />
+              ) : (
+                <LoginScreen onLogin={handleLogin} themeMode={themeMode} onThemeToggle={toggleTheme} />
+              )
+            }
+          />
+          <Route
+            path="/tracking"
+            element={
+              session ? (
+                <AdminApp session={session} onLogout={handleLogout} themeMode={themeMode} onThemeToggle={toggleTheme} />
+              ) : (
+                <PublicTracking />
+              )
+            }
+          />
+          <Route
+            path="/*"
+            element={
+              session ? (
+                <AdminApp session={session} onLogout={handleLogout} themeMode={themeMode} onThemeToggle={toggleTheme} />
+              ) : (
+                <Navigate to="/login" />
+              )
+            }
+          />
+        </Routes>
       </Router>
+      <Analytics />
       <SpeedInsights />
     </ConfigProvider>
   );
