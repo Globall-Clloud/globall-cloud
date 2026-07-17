@@ -1,8 +1,7 @@
 import axios from 'axios';
 
-// Base URL بۆ Backend API
-// لە گەشەپێداندا CRA proxy داواکارییەکانی /api دەگوازێتەوە بۆ backend (port 5000)
-const API_BASE_URL = process.env.REACT_APP_API_URL || '/api';
+// Base URL بۆ Backend API - لە ژینگەی بەرهەمهێنان دەگۆڕدرێت
+const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
 
 const api = axios.create({
   baseURL: API_BASE_URL,
