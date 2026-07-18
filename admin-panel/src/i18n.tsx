@@ -33,7 +33,14 @@ const resources = {
       location: 'شوێن',
       price: 'نرخ',
       weight: 'کێشە',
-      tracking: 'شوێنکەوتن'
+      tracking: 'شوێنکەوتن',
+      password: 'وشەی نهێنی',
+      loginButton: 'چوونەژوورەوە',
+      loginSubtitle: 'سیستەمی بەڕێوەبردنی لۆجستیک',
+      phoneRequired: 'تکایە ژمارەی مۆبایل بنووسە',
+      passwordRequired: 'تکایە وشەی نهێنی بنووسە',
+      loginFailed: 'چوونەژوورەوە سەرکەوتوو نەبوو',
+      networkError: 'پەیوەندی بە سێرڤەرەوە نەکرا'
     }
   },
   ar: {
@@ -66,7 +73,14 @@ const resources = {
       location: 'الموقع',
       price: 'السعر',
       weight: 'الوزن',
-      tracking: 'التتبع'
+      tracking: 'التتبع',
+      password: 'كلمة المرور',
+      loginButton: 'تسجيل الدخول',
+      loginSubtitle: 'نظام إدارة الخدمات اللوجستية',
+      phoneRequired: 'الرجاء إدخال رقم الهاتف',
+      passwordRequired: 'الرجاء إدخال كلمة المرور',
+      loginFailed: 'فشل تسجيل الدخول',
+      networkError: 'تعذر الاتصال بالخادم'
     }
   },
   en: {
@@ -99,7 +113,14 @@ const resources = {
       location: 'Location',
       price: 'Price',
       weight: 'Weight',
-      tracking: 'Tracking'
+      tracking: 'Tracking',
+      password: 'Password',
+      loginButton: 'Sign In',
+      loginSubtitle: 'Logistics Management System',
+      phoneRequired: 'Please enter your phone number',
+      passwordRequired: 'Please enter your password',
+      loginFailed: 'Login failed',
+      networkError: 'Could not connect to the server'
     }
   }
 };

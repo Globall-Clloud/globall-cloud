@@ -1,3 +1,7 @@
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { Layout, Menu, Button, Dropdown, Space, Badge, Spin } from 'antd';
+import { MenuFoldOutlined, MenuUnfoldOutlined, BellOutlined, UserOutlined, LogoutOutlined, GlobalOutlined } from '@ant-design/icons';
 import React, { useMemo, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { Alert, Avatar, Badge, Button, Card, ConfigProvider, Dropdown, Form, Input, Layout, Menu, Space, Switch, Tag, Typography, message, theme as antdTheme } from 'antd';
@@ -26,6 +30,8 @@ import {
   WhatsAppOutlined
 } from '@ant-design/icons';
 import { useTranslation } from 'react-i18next';
+import { AuthProvider, useAuth } from './context/AuthContext';
+import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 import Customers from './pages/Customers';
 import Shipments from './pages/Shipments';
@@ -188,6 +194,21 @@ function AdminApp({ session, onLogout, themeMode, onThemeToggle }: { session: Se
 
   const userMenuItems = [
     { key: 'profile', label: 'Profile', icon: <UserOutlined /> },
+    { key: 'logout', label: t('logout'), icon: <LogoutOutlined /> }
+  ];
+
+  const onUserMenuClick = ({ key }: { key: string }) => {
+    if (key === 'logout') {
+      logout();
+    }
+  };
+
+  return (
+    <Router>
+      <Layout className="main-layout" style={{ minHeight: '100vh' }}>
+        <Sider trigger={null} collapsible collapsed={collapsed} width={250}>
+          <div className="logo" style={{ padding: '16px', textAlign: 'center', color: 'white', fontSize: '18px', fontWeight: 'bold' }}>
+            {!collapsed && '🌐 Globall Cloud'}
     { key: 'whatsapp', label: 'WhatsApp', icon: <WhatsAppOutlined /> },
     { key: 'logout', label: t('logout'), icon: <LogoutOutlined />, danger: true }
   ];
@@ -243,6 +264,33 @@ function AdminApp({ session, onLogout, themeMode, onThemeToggle }: { session: Se
               onClick={() => setCollapsed(!collapsed)}
               className="header-icon-button"
             />
+            <Space>
+              <Dropdown menu={{ items: languageItems, onClick: (e) => handleLanguageChange(e.key) }}>
+                <Button icon={<GlobalOutlined />}>Lang</Button>
+              </Dropdown>
+              <Badge count={5}>
+                <Button icon={<BellOutlined />} />
+              </Badge>
+              <Dropdown menu={{ items: userMenuItems, onClick: onUserMenuClick }}>
+                <Button icon={<UserOutlined />}>{user?.name || user?.role || 'User'}</Button>
+              </Dropdown>
+            </Space>
+          </Header>
+          <Content style={{ padding: '24px' }}>
+            <Routes>
+              <Route path="/" element={<Dashboard />} />
+              <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/customers" element={<Customers />} />
+              <Route path="/shipments" element={<Shipments />} />
+              <Route path="/payments" element={<Payments />} />
+              <Route path="/reports" element={<Reports />} />
+              <Route path="/warehouse" element={<Warehouse />} />
+              <Route path="/staff" element={<Staff />} />
+              <Route path="/settings" element={<Settings />} />
+              <Route path="*" element={<Navigate to="/" />} />
+            </Routes>
+          </Content>
+        </Layout>
             <div>
               <Text className="page-eyebrow">Operations control center</Text>
               <Title level={4}>{menuItems.find(item => item.key === selectedKey)?.label}</Title>
@@ -367,6 +415,28 @@ function App() {
       </Router>
       <SpeedInsights />
     </ConfigProvider>
+  );
+}
+
+function AppContent() {
+  const { isAuthenticated, loading } = useAuth();
+
+  if (loading) {
+    return (
+      <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <Spin size="large" />
+      </div>
+    );
+  }
+
+  return isAuthenticated ? <AdminLayout /> : <Login />;
+}
+
+function App() {
+  return (
+    <AuthProvider>
+      <AppContent />
+    </AuthProvider>
   );
 }
 

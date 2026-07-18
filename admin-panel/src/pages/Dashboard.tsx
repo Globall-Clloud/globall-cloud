@@ -1,7 +1,7 @@
 import React from 'react';
-import { Card, Col, Progress, Row, Space, Statistic, Table, Tag, Typography } from 'antd';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, BarChart, Bar } from 'recharts';
-import { CheckCircleOutlined, ClockCircleOutlined, DollarOutlined, EnvironmentOutlined, RiseOutlined, ShoppingCartOutlined } from '@ant-design/icons';
+import { Card, Row, Col, Statistic, Table } from 'antd';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { UserOutlined, ShoppingCartOutlined, DollarOutlined, RiseOutlined } from '@ant-design/icons';
 import { useTranslation } from 'react-i18next';
 
 const { Text, Title } = Typography;
