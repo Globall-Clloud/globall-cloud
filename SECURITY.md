@@ -92,7 +92,7 @@ declined, etc.
 
 ## Security Team
 
-👤 **Ali (Owner)** - security@globallcloud.com
+👤 **Ali (Owner)** - tamanblbas271@gmail.com
 - Response: علنی 48 ساعت
 - Patch: فرولۆکی 7 ڕۆژ
 
