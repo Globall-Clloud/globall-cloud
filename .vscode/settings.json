@@ -1,0 +1,10 @@
+{
+  "python.testing.unittestArgs": [
+    "-v",
+    "-s",
+    "./admin-panel",
+    "-p",
+    "*test.py"
+  ],
+  "python.testing.pytestEnabled": false
+}
