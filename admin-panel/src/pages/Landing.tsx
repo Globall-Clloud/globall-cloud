@@ -105,7 +105,7 @@ function Landing() {
             <Col xs={24} md={12} xl={6} key={service.title}>
               <Card className="service-card" bordered={false}>
                 <div className="service-icon">{service.icon}</div>
-                <Title level={4}>{service.title}</Title>
+                    <Title level={4}>{service.title}</Title>
                 <Text>{service.text}</Text>
               </Card>
             </Col>
