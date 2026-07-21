@@ -1,0 +1,1418 @@
+<!DOCTYPE html>
+<html lang="ckb" dir="rtl" id="htmlRoot">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#061428">
+<title>Global Cloud — China · UAE · Iraq Logistics</title>
+<meta name="description" content="Global Cloud: air, sea, customs and door-to-door logistics from China and the UAE to every city in Iraq. Real-time tracking, competitive rates.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0A1628; --ink-2:#0F2038; --surface:#122A4A; --surface-2:#1A3B63;
+  --line:#2A4D78; --line-soft:#1F3C60;
+  --teal:#00C2D9; --teal-l:#4FE3F0; --teal-dark:#042C33;
+  --red:#E5533D; --red-l:#F17A66;
+  --amber:#F5A623; --mint:#2ED27F;
+  --text:#F2F8FD; --muted:#9BB2D0; --muted-2:#647FA3;
+  --radius-s:10px; --radius-m:16px; --radius-l:26px;
+  --maxw:1180px;
+  --font:'Cairo',sans-serif; --mono:'JetBrains Mono',monospace;
+  --shadow:0 20px 50px rgba(2,8,20,.4);
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{margin:0; font-family:var(--font); background:var(--ink); color:var(--text); line-height:1.65; -webkit-font-smoothing:antialiased;}
+h1,h2,h3,h4{margin:0; line-height:1.25;}
+p{margin:0;}
+a{color:inherit; text-decoration:none;}
+button, input, select, textarea{font-family:inherit; color:inherit;}
+ul{list-style:none; margin:0; padding:0;}
+.icon{width:20px; height:20px; display:inline-block; vertical-align:-4px; fill:none;}
+.icon-sm{width:16px; height:16px; vertical-align:-2px;}
+.icon-lg{width:28px; height:28px;}
+:focus-visible{outline:2px solid var(--teal-l); outline-offset:2px;}
+@media (prefers-reduced-motion: reduce){ *{animation:none!important; transition:none!important; scroll-behavior:auto!important;} }
+
+.container{max-width:var(--maxw); margin:0 auto; padding-inline:24px;}
+.container.narrow{max-width:640px;}
+.section{padding-block:clamp(40px,6vw,80px);}
+.section-head{text-align:center; max-width:560px; margin:0 auto 44px;}
+.eyebrow{font-family:var(--mono); letter-spacing:2px; color:var(--teal-l); font-size:12.5px; font-weight:700; margin-bottom:12px; display:block;}
+.section-head h2{font-size:clamp(24px,3.4vw,34px); font-weight:800; margin-bottom:12px;}
+.section-head p{color:var(--muted); font-size:15.5px;}
+
+/* ---------- reveal ---------- */
+.reveal{opacity:0; transform:translateY(18px); transition:opacity .6s ease, transform .6s ease;}
+.reveal.in-view{opacity:1; transform:translateY(0);}
+
+/* ---------- buttons & fields ---------- */
+.btn{display:inline-flex; align-items:center; gap:8px; justify-content:center; padding:14px 24px; border-radius:999px; font-weight:800; font-size:14.5px; cursor:pointer; border:1px solid transparent; transition:transform .2s ease, opacity .2s ease, background .2s ease, box-shadow .2s ease; min-height:46px;}
+.btn:active{transform:scale(.97);}
+.btn-primary{background:linear-gradient(135deg,var(--teal-l),var(--teal) 55%,#0A8C9C); color:#03181d; box-shadow:0 8px 22px rgba(0,194,217,.25);}
+.btn-primary:hover{opacity:.95; transform:translateY(-2px); box-shadow:0 12px 28px rgba(0,194,217,.35);}
+.btn-outline{background:transparent; border-color:var(--line); color:var(--text);}
+.btn-outline:hover{border-color:var(--teal-l); color:var(--teal-l); transform:translateY(-1px);}
+.btn-ghost{background:var(--surface-2); color:var(--text);}
+.btn-block{width:100%;}
+.btn:disabled{opacity:.6; cursor:default; transform:none;}
+
+.field-label{display:block; font-size:13px; font-weight:700; color:var(--muted); margin-bottom:7px;}
+.field, select.field, textarea.field{
+  width:100%; background:var(--surface-2); border:1.5px solid var(--line); border-radius:12px;
+  padding:14px 16px; font-size:15px; color:var(--text); transition:border-color .2s ease, box-shadow .2s ease; min-height:48px;
+}
+.field:focus{outline:none; border-color:var(--teal); box-shadow:0 0 0 3px rgba(0,194,217,.15);}
+.field::placeholder{color:var(--muted-2);}
+textarea.field{resize:vertical; min-height:100px;}
+.form-row{margin-bottom:16px;}
+.form-grid{display:grid; grid-template-columns:1fr 1fr; gap:16px;}
+@media(max-width:640px){ .form-grid{grid-template-columns:1fr;} }
+
+/* ---------- nav ---------- */
+.nav{position:sticky; top:0; z-index:200; background:rgba(6,20,40,.86); backdrop-filter:blur(10px); border-bottom:1px solid var(--line-soft);}
+.nav-inner{max-width:var(--maxw); margin:0 auto; padding:14px 24px; display:flex; align-items:center; justify-content:space-between; gap:18px;}
+.brand{display:flex; align-items:center; gap:10px; cursor:pointer; flex-shrink:0;}
+.brand b{font-size:17.5px; font-weight:800;}
+.brand small{display:block; font-size:10px; color:var(--muted); font-weight:600; letter-spacing:.5px;}
+.nav-links{display:flex; gap:26px;}
+.nav-links a{color:var(--muted); font-weight:700; font-size:14px; cursor:pointer; padding:6px 0; border-bottom:2px solid transparent;}
+.nav-links a.active, .nav-links a:hover{color:var(--text); border-color:var(--teal);}
+.nav-right{display:flex; align-items:center; gap:10px;}
+.lang-toggle{display:flex; border:1px solid var(--line); border-radius:999px; overflow:hidden; flex-shrink:0;}
+.lang-toggle button{padding:7px 12px; font-size:11.5px; font-weight:800; background:none; border:none; color:var(--muted); cursor:pointer; font-family:var(--mono);}
+.lang-toggle button.active{background:var(--teal); color:var(--teal-dark);}
+.nav-auth{font-size:13.5px; font-weight:700; color:var(--text); cursor:pointer; white-space:nowrap; display:flex; align-items:center; gap:6px;}
+.burger{display:none; background:none; border:1px solid var(--line); border-radius:10px; width:38px; height:38px; align-items:center; justify-content:center; cursor:pointer; color:var(--text);}
+.mobile-menu{display:none; flex-direction:column; gap:4px; padding:14px 24px 20px; border-bottom:1px solid var(--line-soft); background:var(--ink-2);}
+.mobile-menu.open{display:flex;}
+.mobile-menu a{padding:11px 4px; font-weight:700; color:var(--muted); border-bottom:1px solid var(--line-soft);}
+.mobile-menu a.active{color:var(--teal-l);}
+@media(max-width:900px){
+  .nav-links, .nav-right .btn{display:none;}
+  .burger{display:flex;}
+}
+
+/* ---------- pages ---------- */
+.page{display:none;}
+.page.active{display:block;}
+
+/* ---------- hero ---------- */
+.hero{max-width:var(--maxw); margin:0 auto; padding:clamp(40px,7vw,72px) 24px 30px; display:grid; grid-template-columns:1.05fr .95fr; gap:50px; align-items:center;}
+.hero h1{font-size:clamp(30px,4.6vw,50px); font-weight:900; letter-spacing:-.5px; margin-bottom:18px; background:linear-gradient(135deg,var(--text) 40%,var(--teal-l)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;}
+.hero .sub{color:var(--muted); font-size:16.5px; line-height:1.75; max-width:48ch; margin-bottom:30px;}
+.hero-ctas{display:flex; gap:14px; flex-wrap:wrap;}
+@media(max-width:940px){ .hero{grid-template-columns:1fr;} }
+
+.route-map{position:relative; aspect-ratio:4/3; border-radius:var(--radius-l); background:radial-gradient(circle at 50% 85%, rgba(47,169,184,.16), transparent 60%), linear-gradient(180deg, var(--surface), var(--ink-2)); border:1px solid var(--line-soft); overflow:hidden;}
+.route-map svg{position:absolute; inset:0; width:100%; height:100%;}
+.route-dot{position:absolute; width:11px; height:11px; border-radius:50%; background:var(--teal-l); box-shadow:0 0 0 5px rgba(95,214,224,.18); transform:translate(-50%,-50%);}
+.route-label{position:absolute; transform:translate(-50%,10px); font-size:11.5px; font-weight:700; color:var(--text); white-space:nowrap; text-align:center;}
+.route-pulse{position:absolute; width:9px; height:9px; margin:-4.5px; border-radius:50%; background:var(--teal-l); box-shadow:0 0 14px 3px rgba(95,214,224,.7); offset-rotate:0deg; animation:travel 6s ease-in-out infinite;}
+@keyframes travel{
+  0%{left:8%; top:74%; opacity:0;}
+  6%{opacity:1;}
+  50%{left:50%; top:14%;}
+  94%{opacity:1;}
+  100%{left:92%; top:74%; opacity:0;}
+}
+
+/* ---------- trust bar ---------- */
+.trust-bar{display:grid; grid-template-columns:repeat(4,1fr); gap:20px; max-width:var(--maxw); margin:0 auto; padding:0 24px;}
+.trust-item{text-align:center; padding:24px 10px; background:var(--surface); border:1px solid var(--line-soft); border-radius:var(--radius-m); transition:transform .2s ease, border-color .2s ease;}
+.trust-item:hover{transform:translateY(-3px); border-color:var(--teal);}
+.trust-item b{display:block; font-size:clamp(20px,2.6vw,28px); font-weight:800; color:var(--teal-l); font-family:var(--mono);}
+.trust-item span{font-size:12.5px; color:var(--muted);}
+@media(max-width:760px){ .trust-bar{grid-template-columns:repeat(2,1fr);} }
+
+/* ---------- live track band ---------- */
+.live-track{background:linear-gradient(120deg, var(--surface), var(--ink-2)); border-top:1px solid var(--line-soft); border-bottom:1px solid var(--line-soft);}
+.live-track-inner{max-width:800px; margin:0 auto; padding:46px 24px; text-align:center;}
+.live-track h3{font-size:22px; font-weight:800; margin-bottom:8px;}
+.live-track p{color:var(--muted); margin-bottom:22px; font-size:14.5px;}
+.track-search{display:flex; gap:10px; max-width:460px; margin:0 auto;}
+.track-search .field{flex:1;}
+@media(max-width:480px){ .track-search{flex-direction:column;} }
+
+/* ---------- grids ---------- */
+.grid-5{display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:18px;}
+.grid-4{display:grid; grid-template-columns:repeat(4,1fr); gap:20px;}
+.grid-2{display:grid; grid-template-columns:1fr 1fr; gap:20px;}
+@media(max-width:760px){ .grid-4{grid-template-columns:1fr 1fr;} .grid-2{grid-template-columns:1fr;} }
+@media(max-width:520px){ .grid-4{grid-template-columns:1fr;} }
+
+.card{background:var(--surface); border:1px solid var(--line-soft); border-radius:var(--radius-m); padding:22px;}
+.service-card{background:var(--surface); border:1px solid var(--line-soft); border-radius:var(--radius-m); padding:24px; cursor:pointer; transition:border-color .2s, transform .2s, box-shadow .2s;}
+.service-card:hover{border-color:var(--teal); transform:translateY(-4px); box-shadow:0 14px 30px rgba(0,194,217,.12);}
+.service-icon{width:46px; height:46px; border-radius:13px; background:var(--surface-2); display:flex; align-items:center; justify-content:center; color:var(--teal-l); margin-bottom:16px;}
+.service-card h4{font-size:15.5px; font-weight:800; margin-bottom:8px;}
+.service-card p{color:var(--muted); font-size:13.5px;}
+.service-card .learn{display:inline-flex; align-items:center; gap:6px; margin-top:14px; font-size:12.5px; font-weight:700; color:var(--teal-l);}
+
+.service-detail{display:flex; gap:20px; padding:26px; background:var(--surface); border:1px solid var(--line-soft); border-radius:var(--radius-l); margin-bottom:20px;}
+.service-detail .service-icon{flex-shrink:0;}
+.service-detail h3{font-size:19px; font-weight:800; margin-bottom:8px;}
+.service-detail p.desc{color:var(--muted); font-size:14.5px; margin-bottom:14px;}
+.feature-list{display:flex; flex-direction:column; gap:8px;}
+.feature-list li{display:flex; align-items:center; gap:8px; font-size:13.5px; color:var(--text);}
+.feature-list .icon{color:var(--mint); flex-shrink:0;}
+@media(max-width:640px){ .service-detail{flex-direction:column;} }
+
+.step-card{position:relative; padding:26px 20px; background:var(--surface); border:1px solid var(--line-soft); border-radius:var(--radius-m);}
+.step-num{font-family:var(--mono); font-weight:800; color:var(--teal-l); font-size:13px; letter-spacing:1px; margin-bottom:14px; display:block;}
+.step-card h4{font-size:15px; font-weight:800; margin-bottom:6px;}
+.step-card p{color:var(--muted); font-size:13.5px;}
+
+.feature-card{text-align:center; padding:26px 18px;}
+.feature-card .service-icon{margin-inline:auto;}
+
+.cta-band{background:linear-gradient(120deg, var(--teal-dark), var(--ink-2) 65%); border:1px solid var(--line-soft); border-radius:var(--radius-l); padding:44px 30px; text-align:center; max-width:var(--maxw); margin:0 auto; box-shadow:0 20px 50px rgba(0,194,217,.08);}
+.cta-band h3{font-size:clamp(20px,3vw,28px); font-weight:800; margin-bottom:10px;}
+.cta-band p{color:var(--muted); margin-bottom:24px;}
+.cta-actions{display:flex; gap:14px; justify-content:center; flex-wrap:wrap;}
+
+/* ---------- footer ---------- */
+footer{border-top:1px solid var(--line-soft); background:var(--ink-2); margin-top:60px;}
+.footer-grid{display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:32px; padding-block:50px;}
+.footer-col h5{font-size:13px; font-weight:800; color:var(--muted); letter-spacing:.5px; margin-bottom:16px; text-transform:uppercase;}
+.footer-col p{color:var(--muted); font-size:13.5px;}
+.footer-col ul li{margin-bottom:10px;}
+.footer-col ul a{color:var(--muted); font-size:13.5px; cursor:pointer;}
+.footer-col ul a:hover{color:var(--teal-l);}
+.footer-contact-row{display:flex; align-items:center; gap:8px; margin-bottom:10px; font-size:13.5px; color:var(--muted);}
+.footer-bottom{border-top:1px solid var(--line-soft); padding:18px 24px; text-align:center; font-size:12.5px; color:var(--muted-2);}
+@media(max-width:860px){ .footer-grid{grid-template-columns:1fr 1fr; padding-block:36px;} }
+@media(max-width:520px){ .footer-grid{grid-template-columns:1fr;} }
+
+/* ---------- track page ---------- */
+.page-head{max-width:var(--maxw); margin:0 auto; padding:44px 24px 10px; text-align:center;}
+.page-head h1{font-size:clamp(24px,3.6vw,34px); font-weight:800; margin-bottom:8px;}
+.page-head p{color:var(--muted); font-size:14.5px;}
+.track-hero-card{background:linear-gradient(120deg,var(--surface),var(--ink-2)); border:1px solid var(--line-soft); border-radius:var(--radius-l); padding:24px; margin-bottom:22px;}
+.thc-top{display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; flex-wrap:wrap; gap:10px;}
+.id-badge{font-family:var(--mono); font-weight:700; font-size:15px; letter-spacing:.5px;}
+.stamp{display:inline-flex; align-items:center; gap:6px; font-family:var(--mono); font-size:11px; font-weight:700; letter-spacing:.4px; padding:5px 12px; border-radius:7px; border:1px dashed currentColor; text-transform:uppercase;}
+.stamp.transit{color:var(--teal-l); background:rgba(95,214,224,.08);}
+.stamp.delivered{color:var(--mint); background:rgba(52,199,123,.08);}
+.stamp.pending{color:var(--amber); background:rgba(240,168,58,.08);}
+.route-line{display:flex; align-items:center; gap:10px; font-size:16px; font-weight:700; flex-wrap:wrap;}
+.route-line .arrow{color:var(--teal-l);}
+.kv{display:flex; justify-content:space-between; align-items:center; font-size:13.5px; padding:9px 0; border-bottom:1px dashed var(--line-soft); gap:10px;}
+.kv:last-child{border-bottom:none;}
+.kv span{color:var(--muted);}
+.kv b{font-weight:700; text-align:end;}
+.card h4{font-size:14.5px; font-weight:800; margin-bottom:14px;}
+
+.timeline{position:relative; padding-inline-start:4px;}
+.tl-step{position:relative; padding-inline-start:28px; padding-bottom:22px;}
+.tl-step:last-child{padding-bottom:0;}
+.tl-step::before{content:''; position:absolute; inset-inline-start:5px; top:16px; bottom:-6px; width:2px; background:var(--line-soft);}
+.tl-step:last-child::before{display:none;}
+.tl-step.done::before{background:var(--mint);}
+.tl-dot{position:absolute; inset-inline-start:0; top:2px; width:12px; height:12px; border-radius:50%; background:var(--surface-2); border:2px solid var(--line);}
+.tl-step.done .tl-dot{background:var(--mint); border-color:var(--mint);}
+.tl-step.current .tl-dot{background:var(--teal); border-color:var(--teal-l); box-shadow:0 0 0 4px rgba(47,169,184,.22);}
+.tl-body b{display:block; font-size:14px; font-weight:700;}
+.tl-step.future .tl-body b{color:var(--muted);}
+.tl-body span{font-size:12px; color:var(--muted); font-family:var(--mono);}
+
+.empty-state{text-align:center; padding:50px 20px; background:var(--surface); border:1px dashed var(--line); border-radius:var(--radius-l);}
+.empty-state .icon-lg{color:var(--muted); margin-bottom:14px;}
+.empty-state h3{font-size:17px; font-weight:800; margin-bottom:8px;}
+.empty-state p{color:var(--muted); font-size:13.5px; margin-bottom:20px;}
+
+.track-row{display:flex; justify-content:space-between; align-items:center; gap:14px; padding:16px; background:var(--surface); border:1px solid var(--line-soft); border-radius:var(--radius-m); cursor:pointer; margin-bottom:12px;}
+.track-row:hover{border-color:var(--teal);}
+.track-row .trow-left b{display:block; font-family:var(--mono); font-size:13.5px; margin-bottom:4px;}
+.track-row .trow-left span{font-size:12.5px; color:var(--muted);}
+
+/* ---------- request page ---------- */
+.request-panel{max-width:640px; margin:0 auto; padding:0 24px 60px;}
+.success-panel{text-align:center; padding:40px 24px; background:var(--surface); border:1px solid var(--line-soft); border-radius:var(--radius-l);}
+.success-panel .icon-lg{color:var(--mint); margin-bottom:14px;}
+.success-id{font-family:var(--mono); font-size:22px; font-weight:800; color:var(--teal-l); margin:12px 0 22px; letter-spacing:1px;}
+.success-actions{display:flex; gap:12px; justify-content:center; flex-wrap:wrap;}
+
+/* ---------- portal ---------- */
+.portal-panel{max-width:460px; margin:0 auto; padding:6px 24px 60px;}
+.portal-dash{max-width:760px; margin:0 auto; padding:0 24px 60px;}
+.auth-badge{width:60px; height:60px; border-radius:18px; background:linear-gradient(135deg,var(--teal-l),var(--teal)); display:flex; align-items:center; justify-content:center; margin:0 auto 16px; box-shadow:0 12px 26px rgba(0,194,217,.28);}
+.auth-badge svg{color:var(--teal-dark);}
+.auth-card{background:linear-gradient(160deg,var(--surface),var(--ink-2)); border:1px solid var(--line-soft); border-radius:var(--radius-l); padding:32px 28px; box-shadow:var(--shadow); position:relative; overflow:hidden;}
+.auth-card::before{content:''; position:absolute; top:-70px; inset-inline-end:-70px; width:200px; height:200px; border-radius:50%; background:radial-gradient(circle, rgba(79,227,240,.16), transparent 70%); pointer-events:none;}
+.field-icon-wrap{position:relative;}
+.field-icon-wrap .field{padding-inline-start:42px;}
+.field-icon-wrap .field-icon{position:absolute; inset-inline-start:14px; top:50%; transform:translateY(-50%); color:var(--muted-2); pointer-events:none;}
+.auth-trust{display:flex; align-items:center; justify-content:center; gap:6px; margin-top:18px; font-size:12px; color:var(--muted-2); text-align:center;}
+.auth-trust svg{color:var(--mint); flex-shrink:0;}
+@media(max-width:480px){ .auth-card{padding:26px 20px;} }
+
+.dash-head{display:flex; align-items:center; justify-content:space-between; margin-bottom:24px; flex-wrap:wrap; gap:14px; padding:20px 22px; background:linear-gradient(120deg,var(--surface),var(--ink-2)); border:1px solid var(--line-soft); border-radius:var(--radius-l);}
+.dash-head-info{display:flex; align-items:center; gap:14px;}
+.dash-avatar{width:48px; height:48px; border-radius:50%; background:linear-gradient(135deg,var(--teal-l),var(--teal)); display:flex; align-items:center; justify-content:center; flex-shrink:0; box-shadow:0 8px 18px rgba(0,194,217,.25);}
+.dash-avatar svg{color:var(--teal-dark);}
+.dash-head h2{font-size:19px; font-weight:800; margin-bottom:2px;}
+.dash-head .dash-sub{display:block; font-size:12.5px; color:var(--muted); font-weight:600;}
+.quick-actions{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-bottom:28px;}
+@media(max-width:600px){ .quick-actions{grid-template-columns:1fr;} }
+.qa-card{display:flex; flex-direction:column; align-items:center; gap:10px; text-align:center; padding:22px 10px; background:var(--surface); border:1px solid var(--line-soft); border-radius:var(--radius-m); cursor:pointer; font-size:13.5px; font-weight:700; transition:transform .2s ease, border-color .2s ease; min-height:48px;}
+.qa-card:hover{border-color:var(--teal); transform:translateY(-3px);}
+
+/* ---------- contact ---------- */
+.contact-grid{display:grid; grid-template-columns:1fr 1fr; gap:26px; max-width:var(--maxw); margin:0 auto; padding:0 24px 70px; align-items:start;}
+@media(max-width:860px){ .contact-grid{grid-template-columns:1fr;} }
+.contact-info-card{display:flex; align-items:flex-start; gap:14px; padding:18px; background:var(--surface); border:1px solid var(--line-soft); border-radius:var(--radius-m); margin-bottom:14px;}
+.contact-info-card .service-icon{margin:0;}
+.contact-info-card b{display:block; font-size:14px; margin-bottom:3px;}
+.contact-info-card span, .contact-info-card a{color:var(--muted); font-size:13.5px;}
+
+/* ---------- misc ---------- */
+.hint{font-size:11.5px; color:var(--muted-2); text-align:center; margin-top:10px;}
+.mono{font-family:var(--mono);}
+/* ---------- staff console (admin / accountant) ---------- */
+.admin-shell{max-width:720px; margin:0 auto; padding:50px 24px 70px;}
+.admin-login-box{background:linear-gradient(160deg, #0B1522, var(--ink-2)); border:1px solid var(--line-soft); border-radius:var(--radius-l); padding:32px 28px; box-shadow:var(--shadow);}
+.admin-login-head{display:flex; align-items:center; gap:14px; margin-bottom:24px;}
+.admin-login-head svg{color:var(--amber); width:30px; height:30px; flex-shrink:0;}
+.admin-login-head h1{font-size:19px; font-weight:800;}
+.admin-error{color:var(--red-l); font-size:13px; margin-top:12px; text-align:center;}
+.admin-warning{background:rgba(245,166,35,.1); border:1px solid rgba(245,166,35,.3); color:var(--amber); font-size:13px; padding:12px 14px; border-radius:10px; margin-top:16px; line-height:1.6;}
+.admin-topbar{display:flex; align-items:center; justify-content:space-between; gap:12px; padding:18px 22px; background:var(--surface); border:1px solid var(--line-soft); border-radius:var(--radius-m); margin-bottom:20px;}
+.admin-list{display:flex; flex-direction:column; gap:12px;}
+.admin-row{display:flex; align-items:center; justify-content:space-between; gap:14px; flex-wrap:wrap; padding:16px 18px; background:var(--surface); border:1px solid var(--line-soft); border-radius:var(--radius-m);}
+.admin-row-main{display:flex; flex-direction:column; gap:4px; font-size:13.5px;}
+.admin-row-main span{color:var(--muted);}
+.admin-fin-inputs{display:flex; gap:8px; align-items:center; flex-wrap:wrap;}
+.staff-link{margin-inline-start:10px; color:var(--muted-2); font-size:11.5px; opacity:.6;}
+.staff-link:hover{opacity:1; color:var(--teal-l);}
+@media(max-width:600px){ .admin-row{flex-direction:column; align-items:stretch;} }
+</style>
+</head>
+<body>
+
+<svg style="position:absolute; width:0; height:0; overflow:hidden;" aria-hidden="true">
+<defs>
+<symbol id="i-plane" viewBox="0 0 24 24"><path d="M2 12L22 4L14 22L11 13L2 12Z" fill="currentColor"/></symbol>
+<symbol id="i-ship" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17L5 11H19L21 17"/><path d="M12 11V3"/><path d="M12 3L17 8H12Z" fill="currentColor" stroke="none"/><path d="M2 17C4 19 8 19 12 17C16 19 20 19 22 17"/></symbol>
+<symbol id="i-clipboard" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4" width="14" height="17" rx="2"/><rect x="9" y="2" width="6" height="4" rx="1"/><path d="M8.5 12.5L11 15L16 9.5"/></symbol>
+<symbol id="i-warehouse" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10L12 4L21 10V20H3V10Z"/><rect x="9" y="13" width="6" height="7"/></symbol>
+<symbol id="i-truck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="7" width="13" height="10"/><path d="M14 10H18L22 14V17H14Z"/><circle cx="6" cy="19" r="2"/><circle cx="17.5" cy="19" r="2"/></symbol>
+<symbol id="i-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21L16 16"/></symbol>
+<symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22C12 22 19 15.5 19 10A7 7 0 1 0 5 10C5 15.5 12 22 12 22Z"/><circle cx="12" cy="10" r="2.5"/></symbol>
+<symbol id="i-user" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20C4 15.5 7.5 13 12 13C16.5 13 20 15.5 20 20"/></symbol>
+<symbol id="i-bell" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 10C6 6 8.5 4 12 4C15.5 4 18 6 18 10C18 14 20 15 20 16H4C4 15 6 14 6 10Z"/><path d="M10 19A2 2 0 0 0 14 19"/></symbol>
+<symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7L12 13L21 7"/></symbol>
+<symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3H9L11 8L8.5 9.5C9.5 12 12 14.5 14.5 15.5L16 13L21 15V18C21 19.5 19.5 21 18 21C10 21 3 14 3 6C3 4.5 4.5 3 6 3Z"/></symbol>
+<symbol id="i-chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4H20V16H8L4 20V4Z"/></symbol>
+<symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7V12L16 14"/></symbol>
+<symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3L20 6V11C20 16 16.5 19.5 12 21C7.5 19.5 4 16 4 11V6L12 3Z"/><path d="M8.5 12L11 14.5L15.5 9.5"/></symbol>
+<symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 12L11 15L16 9"/></symbol>
+<symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12H19"/><path d="M13 6L19 12L13 18"/></symbol>
+<symbol id="i-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6H20"/><path d="M4 12H20"/><path d="M4 18H20"/></symbol>
+<symbol id="i-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 5L19 19"/><path d="M19 5L5 19"/></symbol>
+<symbol id="i-card" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10H22"/></symbol>
+<symbol id="i-box" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8L12 4L21 8V17L12 21L3 17V8Z"/><path d="M3 8L12 12L21 8"/><path d="M12 12V21"/></symbol>
+</defs>
+</svg>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="brand" onclick="route('home')">
+      <svg class="icon-lg" style="color:var(--teal-l);"><use href="#i-box"></use></svg>
+      <div><b>Global Cloud</b><small data-i18n="brand.tagline"></small></div>
+    </div>
+    <ul class="nav-links">
+      <li><a data-route="home" onclick="route('home')" data-i18n="nav.home"></a></li>
+      <li><a data-route="services" onclick="route('services')" data-i18n="nav.services"></a></li>
+      <li><a data-route="track" onclick="route('track')" data-i18n="nav.track"></a></li>
+      <li><a data-route="contact" onclick="route('contact')" data-i18n="nav.contact"></a></li>
+    </ul>
+    <div class="nav-right">
+      <div class="lang-toggle">
+        <button id="langKuBtn" onclick="setLang('ku')">KU</button>
+        <button id="langEnBtn" onclick="setLang('en')">EN</button>
+      </div>
+      <span class="nav-auth" onclick="route('portal')"><svg class="icon-sm"><use href="#i-user"></use></svg><span id="authNavLabel"></span></span>
+      <button class="btn btn-primary" onclick="route('request')" data-i18n="nav.quote"></button>
+    </div>
+    <button class="burger" onclick="toggleMobileMenu()"><svg class="icon"><use href="#i-menu"></use></svg></button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a data-route="home" onclick="route('home')" data-i18n="nav.home"></a>
+    <a data-route="services" onclick="route('services')" data-i18n="nav.services"></a>
+    <a data-route="track" onclick="route('track')" data-i18n="nav.track"></a>
+    <a data-route="contact" onclick="route('contact')" data-i18n="nav.contact"></a>
+    <a data-route="portal" onclick="route('portal')" id="mobileAuthLabel"></a>
+    <div style="display:flex; gap:10px; margin-top:14px;">
+      <div class="lang-toggle" style="flex-shrink:0;">
+        <button onclick="setLang('ku')">KU</button>
+        <button onclick="setLang('en')">EN</button>
+      </div>
+      <button class="btn btn-primary btn-block" onclick="route('request')" data-i18n="nav.quote"></button>
+    </div>
+  </div>
+</nav>
+
+<main>
+
+<!-- ============ HOME ============ -->
+<section class="page active" id="page-home">
+  <div class="hero">
+    <div>
+      <span class="eyebrow" data-i18n="hero.eyebrow"></span>
+      <h1 data-i18n="hero.title"></h1>
+      <p class="sub" data-i18n="hero.subtitle"></p>
+      <div class="hero-ctas">
+        <button class="btn btn-primary" onclick="route('request')"><svg class="icon-sm"><use href="#i-box"></use></svg><span data-i18n="hero.ctaQuote"></span></button>
+        <button class="btn btn-outline" onclick="goTrack()"><svg class="icon-sm"><use href="#i-search"></use></svg><span data-i18n="hero.ctaTrack"></span></button>
+      </div>
+    </div>
+    <div class="route-map">
+      <svg viewBox="0 0 600 200" preserveAspectRatio="none">
+        <path d="M48,144 Q300,-80 552,144" fill="none" stroke="var(--teal)" stroke-width="2" stroke-dasharray="6 8" opacity=".55"/>
+      </svg>
+      <div class="route-dot" style="left:8%; top:72%;"></div>
+      <div class="route-dot" style="left:50%; top:16%;"></div>
+      <div class="route-dot" style="left:92%; top:72%;"></div>
+      <div class="route-label" style="left:8%; top:72%;" data-i18n="hero.route.a"></div>
+      <div class="route-label" style="left:50%; top:16%;" data-i18n="hero.route.b"></div>
+      <div class="route-label" style="left:92%; top:72%;" data-i18n="hero.route.c"></div>
+      <div class="route-pulse"></div>
+    </div>
+  </div>
+
+  <div class="trust-bar reveal">
+    <div class="trust-item"><b data-i18n="trust.s1v"></b><span data-i18n="trust.s1l"></span></div>
+    <div class="trust-item"><b data-i18n="trust.s2v"></b><span data-i18n="trust.s2l"></span></div>
+    <div class="trust-item"><b data-i18n="trust.s3v"></b><span data-i18n="trust.s3l"></span></div>
+    <div class="trust-item"><b data-i18n="trust.s4v"></b><span data-i18n="trust.s4l"></span></div>
+  </div>
+
+  <div class="live-track" style="margin-top:56px;">
+    <div class="live-track-inner reveal">
+      <h3 data-i18n="liveTrack.heading"></h3>
+      <p data-i18n="liveTrack.sub"></p>
+      <form class="track-search" onsubmit="event.preventDefault(); goTrack(document.getElementById('heroTrackInput').value);">
+        <input class="field" id="heroTrackInput" data-i18n-ph="liveTrack.placeholder">
+        <button class="btn btn-primary" type="submit"><svg class="icon-sm"><use href="#i-search"></use></svg><span data-i18n="liveTrack.button"></span></button>
+      </form>
+    </div>
+  </div>
+
+  <div class="section container">
+    <div class="section-head reveal">
+      <span class="eyebrow" data-i18n="services.eyebrow"></span>
+      <h2 data-i18n="services.heading"></h2>
+      <p data-i18n="services.sub"></p>
+    </div>
+    <div class="grid-5 reveal" id="homeServicesGrid"></div>
+  </div>
+
+  <div class="section container">
+    <div class="section-head reveal">
+      <span class="eyebrow" data-i18n="how.eyebrow"></span>
+      <h2 data-i18n="how.heading"></h2>
+    </div>
+    <div class="grid-4 reveal" id="howGrid"></div>
+  </div>
+
+  <div class="section container">
+    <div class="section-head reveal">
+      <span class="eyebrow" data-i18n="why.eyebrow"></span>
+      <h2 data-i18n="why.heading"></h2>
+    </div>
+    <div class="grid-4 reveal" id="whyGrid"></div>
+  </div>
+
+  <div class="section container">
+    <div class="cta-band reveal">
+      <h3 data-i18n="cta.heading"></h3>
+      <p data-i18n="cta.sub"></p>
+      <div class="cta-actions">
+        <button class="btn btn-primary" onclick="route('request')" data-i18n="cta.b1"></button>
+        <button class="btn btn-outline" onclick="route('contact')" data-i18n="cta.b2"></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SERVICES ============ -->
+<section class="page" id="page-services">
+  <div class="page-head">
+    <h1 data-i18n="services.heading"></h1>
+    <p data-i18n="services.sub"></p>
+  </div>
+  <div class="container" style="padding-bottom:60px;" id="servicesDetailWrap"></div>
+</section>
+
+<!-- ============ TRACK ============ -->
+<section class="page" id="page-track">
+  <div class="page-head">
+    <h1 data-i18n="track.heading"></h1>
+    <p data-i18n="track.sub"></p>
+  </div>
+  <div class="container narrow" style="margin-bottom:30px;">
+    <form class="track-search" onsubmit="event.preventDefault(); doTrackSearch();">
+      <input class="field" id="trackInput" data-i18n-ph="track.searchPh">
+      <button class="btn btn-primary" type="submit"><svg class="icon-sm"><use href="#i-search"></use></svg><span data-i18n="track.searchBtn"></span></button>
+    </form>
+  </div>
+  <div class="container narrow" style="padding-bottom:70px;" id="trackResult"></div>
+</section>
+
+<!-- ============ REQUEST ============ -->
+<section class="page" id="page-request">
+  <div class="page-head">
+    <h1 data-i18n="request.heading"></h1>
+    <p data-i18n="request.sub"></p>
+  </div>
+  <div class="request-panel" id="requestFormWrap">
+    <form onsubmit="handleRequestSubmit(event)">
+      <div class="form-row"><label class="field-label" data-i18n="request.name"></label><input class="field" id="reqName" required></div>
+      <div class="form-grid">
+        <div class="form-row"><label class="field-label" data-i18n="request.phone"></label><input class="field" type="tel" id="reqPhone" required></div>
+        <div class="form-row"><label class="field-label" data-i18n="request.email"></label><input class="field" type="email" id="reqEmail"></div>
+      </div>
+      <div class="form-grid">
+        <div class="form-row"><label class="field-label" data-i18n="request.origin"></label><select class="field" id="reqOrigin"></select></div>
+        <div class="form-row"><label class="field-label" data-i18n="request.destination"></label><select class="field" id="reqDestination"></select></div>
+      </div>
+      <div class="form-grid">
+        <div class="form-row"><label class="field-label" data-i18n="request.type"></label>
+          <select class="field" id="reqType">
+            <option value="air" data-i18n="track.type.air"></option>
+            <option value="sea" data-i18n="track.type.sea"></option>
+          </select>
+        </div>
+        <div class="form-row"><label class="field-label" data-i18n="request.weight"></label><input class="field" type="number" min="1" id="reqWeight" required></div>
+      </div>
+      <div class="form-row"><label class="field-label" data-i18n="request.notes"></label><textarea class="field" id="reqNotes"></textarea></div>
+      <button class="btn btn-primary btn-block" type="submit" id="reqSubmitBtn" data-i18n="request.submit"></button>
+    </form>
+  </div>
+  <div class="request-panel" id="requestSuccessWrap" style="display:none;"></div>
+</section>
+
+<!-- ============ PORTAL ============ -->
+<section class="page" id="page-portal">
+  <div class="page-head">
+    <div class="auth-badge"><svg class="icon-lg"><use href="#i-user"></use></svg></div>
+    <h1 data-i18n="portal.signInH"></h1>
+    <p id="portalHeadSub" data-i18n="portal.signInSub"></p>
+  </div>
+  <div class="portal-panel" id="portalSignIn">
+    <div class="auth-card">
+      <form onsubmit="handleSignIn(event)">
+        <div class="form-row"><label class="field-label" data-i18n="portal.name"></label>
+          <div class="field-icon-wrap"><svg class="icon-sm field-icon"><use href="#i-user"></use></svg><input class="field" id="piName" required></div>
+        </div>
+        <div class="form-row"><label class="field-label" data-i18n="portal.email"></label>
+          <div class="field-icon-wrap"><svg class="icon-sm field-icon"><use href="#i-mail"></use></svg><input class="field" type="email" id="piEmail" required></div>
+        </div>
+        <div class="form-row"><label class="field-label" data-i18n="portal.phone"></label>
+          <div class="field-icon-wrap"><svg class="icon-sm field-icon"><use href="#i-phone"></use></svg><input class="field" type="tel" id="piPhone"></div>
+        </div>
+        <button class="btn btn-primary btn-block" type="submit" data-i18n="portal.continueBtn"></button>
+        <div class="auth-trust"><svg class="icon-sm"><use href="#i-shield"></use></svg><span data-i18n="portal.trustNote"></span></div>
+      </form>
+    </div>
+  </div>
+  <div class="portal-dash" id="portalDashboard" style="display:none;">
+    <div class="dash-head">
+      <div class="dash-head-info">
+        <div class="dash-avatar"><svg class="icon"><use href="#i-user"></use></svg></div>
+        <div>
+          <h2><span data-i18n="portal.hi"></span> <span id="dashName"></span> 👋</h2>
+          <span class="dash-sub" data-i18n="portal.dashboardSub"></span>
+        </div>
+      </div>
+      <button class="btn btn-outline" onclick="handleSignOut()" data-i18n="portal.signOut"></button>
+    </div>
+    <div class="quick-actions">
+      <div class="qa-card" onclick="goTrack()"><svg class="icon-lg" style="color:var(--teal-l);"><use href="#i-search"></use></svg><span data-i18n="portal.qTrack"></span></div>
+      <div class="qa-card" onclick="route('request')"><svg class="icon-lg" style="color:var(--teal-l);"><use href="#i-box"></use></svg><span data-i18n="portal.qRequest"></span></div>
+      <div class="qa-card" onclick="toggleEditProfile()"><svg class="icon-lg" style="color:var(--teal-l);"><use href="#i-user"></use></svg><span data-i18n="portal.qEdit"></span></div>
+    </div>
+    <div id="editProfileWrap" style="display:none; margin-bottom:28px;"></div>
+    <h4 style="font-size:15px; font-weight:800; margin-bottom:14px;" data-i18n="portal.myShipments"></h4>
+    <div id="myShipmentsList"></div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="page" id="page-contact">
+  <div class="page-head">
+    <h1 data-i18n="contact.heading"></h1>
+    <p data-i18n="contact.sub"></p>
+  </div>
+  <div class="contact-grid">
+    <div>
+      <div class="contact-info-card">
+        <div class="service-icon"><svg class="icon"><use href="#i-phone"></use></svg></div>
+        <div><b data-i18n="contact.phoneL"></b><a href="tel:+9647501234567">+964 750 123 4567</a></div>
+      </div>
+      <div class="contact-info-card">
+        <div class="service-icon"><svg class="icon"><use href="#i-mail"></use></svg></div>
+        <div><b data-i18n="contact.emailL"></b><a href="mailto:info@globalcloud-iq.com">info@globalcloud-iq.com</a></div>
+      </div>
+      <div class="contact-info-card">
+        <div class="service-icon"><svg class="icon"><use href="#i-chat"></use></svg></div>
+        <div><b data-i18n="contact.whatsappL"></b><a href="https://wa.me/9647501234567" target="_blank" rel="noopener">+964 750 123 4567</a></div>
+      </div>
+      <div class="contact-info-card">
+        <div class="service-icon"><svg class="icon"><use href="#i-pin"></use></svg></div>
+        <div><b data-i18n="contact.addressL"></b><span data-i18n="footer.address"></span></div>
+      </div>
+      <div class="contact-info-card">
+        <div class="service-icon"><svg class="icon"><use href="#i-clock"></use></svg></div>
+        <div><b data-i18n="contact.hoursL"></b><span data-i18n="contact.hoursV"></span></div>
+      </div>
+    </div>
+    <div class="card" id="contactFormWrap">
+      <form onsubmit="handleContactSubmit(event)">
+        <div class="form-row"><label class="field-label" data-i18n="contact.formName"></label><input class="field" id="cName" required></div>
+        <div class="form-row"><label class="field-label" data-i18n="contact.formEmail"></label><input class="field" type="email" id="cEmail" required></div>
+        <div class="form-row"><label class="field-label" data-i18n="contact.formMsg"></label><textarea class="field" id="cMsg" required></textarea></div>
+        <button class="btn btn-primary btn-block" type="submit" data-i18n="contact.send"></button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STAFF CONSOLE (admin / accountant) — not linked from main nav ============ -->
+<section class="page" id="page-admin">
+  <div class="admin-shell">
+    <div id="adminLoginView" class="admin-login-box">
+      <div class="admin-login-head">
+        <svg class="icon-lg"><use href="#i-shield"></use></svg>
+        <div>
+          <h1>کۆنسۆڵی ستاف</h1>
+          <p class="hint">تەنها بۆ ئەدمین و محاسب — کڕیارەکان لێرە چوونەژوورەوە ناکەن</p>
+        </div>
+      </div>
+      <form onsubmit="handleStaffSignIn(event)">
+        <div class="form-row"><label class="field-label">ئیمەیل</label><input class="field" type="email" id="staffEmail" required></div>
+        <div class="form-row"><label class="field-label">وشەی نهێنی</label><input class="field" type="password" id="staffPassword" required></div>
+        <button class="btn btn-primary btn-block" type="submit" id="staffLoginBtn">چوونەژوورەوە</button>
+      </form>
+      <p id="staffLoginError" class="admin-error" style="display:none;"></p>
+      <div id="adminNotConfigured" class="admin-warning" style="display:none;">
+        Supabase هێشتا پەیوەست نەکراوە — URL و anon key لە کۆدەکەدا زیادبکە (سەرەتای script tag).
+      </div>
+    </div>
+
+    <div id="adminDashView" style="display:none;">
+      <div class="admin-topbar">
+        <div>
+          <b id="staffRoleLabel"></b>
+          <span class="hint" id="staffEmailLabel" style="display:block;"></span>
+        </div>
+        <button class="btn btn-outline" onclick="handleStaffSignOut()">چوونەدەرەوە</button>
+      </div>
+      <div id="adminContent"></div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="container footer-grid">
+    <div class="footer-col">
+      <div class="brand" style="margin-bottom:14px;">
+        <svg class="icon-lg" style="color:var(--teal-l);"><use href="#i-box"></use></svg>
+        <b style="font-size:17px;">Global Cloud</b>
+      </div>
+      <p data-i18n="footer.blurb"></p>
+    </div>
+    <div class="footer-col">
+      <h5 data-i18n="footer.quick"></h5>
+      <ul>
+        <li><a onclick="route('home')" data-i18n="nav.home"></a></li>
+        <li><a onclick="route('services')" data-i18n="nav.services"></a></li>
+        <li><a onclick="route('track')" data-i18n="nav.track"></a></li>
+        <li><a onclick="route('request')" data-i18n="nav.quote"></a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5 data-i18n="footer.servicesH"></h5>
+      <ul id="footerServicesList"></ul>
+    </div>
+    <div class="footer-col">
+      <h5 data-i18n="footer.contactH"></h5>
+      <div class="footer-contact-row"><svg class="icon-sm"><use href="#i-pin"></use></svg><span data-i18n="footer.address"></span></div>
+      <div class="footer-contact-row"><svg class="icon-sm"><use href="#i-phone"></use></svg><span>+964 750 123 4567</span></div>
+      <div class="footer-contact-row"><svg class="icon-sm"><use href="#i-mail"></use></svg><span>info@globalcloud-iq.com</span></div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© <span id="yearNow"></span> Global Cloud. </span><span data-i18n="footer.rights"></span>
+    <a href="#admin" onclick="route('admin')" class="staff-link">ستاف</a>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script>
+/* ================= SUPABASE (real backend for admin / accountant) =================
+   1. Create a free project at https://supabase.com
+   2. Run supabase-schema.sql in its SQL Editor
+   3. Paste your Project URL + anon public key below (Project Settings → API)
+   The anon key is DESIGNED to be public / embedded in frontend code — it is safe
+   to publish, since access is enforced by the Row Level Security policies in the
+   schema file, not by hiding this key. Never put your "service_role" key here. */
+const SUPABASE_URL = 'YOUR_SUPABASE_PROJECT_URL';
+const SUPABASE_ANON_KEY = 'YOUR_SUPABASE_ANON_PUBLIC_KEY';
+const sb = (SUPABASE_URL.startsWith('http') && window.supabase)
+  ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
+  : null;
+const STEP_KEYS = ['placed','pickedUp','transit','customs','outForDelivery','delivered'];
+
+/* ================= OWNER NOTIFICATIONS =================
+   New "Request a Quote" and "Contact" form submissions are emailed here
+   automatically via FormSubmit.co (no backend needed). The FIRST submission
+   after deploying will trigger a one-time "confirm your email" message from
+   FormSubmit to this address — it must be clicked once before notifications
+   start arriving. A WhatsApp quick-confirm button also uses this number. */
+const OWNER_NOTIFY_EMAIL = 'aliblbas697@gmail.com';
+const OWNER_WHATSAPP = '9647507577137';
+
+async function notifyOwner(subject, fields){
+  try{
+    await fetch('https://formsubmit.co/ajax/'+OWNER_NOTIFY_EMAIL, {
+      method:'POST',
+      headers:{'Content-Type':'application/json','Accept':'application/json'},
+      body:JSON.stringify(Object.assign({_subject:subject}, fields))
+    });
+  }catch(e){ /* silent fail — never blocks the customer's success screen */ }
+}
+
+/* ================= I18N ================= */
+const I18N = {
+ku:{
+  brand:{tagline:'لۆجستیک'},
+  nav:{home:'سەرەکی',services:'خزمەتگوزارییەکان',track:'شوێنکەوتن',contact:'پەیوەندی',signIn:'چوونەژوورەوە',dashboard:'داشبۆرد',quote:'داواکردنی نرخ'},
+  hero:{eyebrow:'چین  ·  ئیمارات  ·  عێراق',title:'گەیاندنی متمانە بۆ هەموو سنوورەکان',subtitle:'Global Cloud بارت بە سەلامەتی و خێرایی لە چین و ئیماراتی عەرەبی یەکگرتوو دەگەیەنێت بۆ هەموو شارەکانی عێراق.',ctaTrack:'شوێنکەوتنی بار',ctaQuote:'داواکردنی نرخ',route:{a:'گوانگژۆ، چین',b:'دوبەی، ئیمارات',c:'هەولێر، عێراق'}},
+  trust:{s1v:'+٥٠٠',s1l:'بار گەیەنراو مانگانە',s2v:'٢٤/٧',s2l:'پشتگیری بەردەوام',s3v:'٤٨ کاتژمێر',s3l:'مامناوەندی ئاسانکاری گومرگ',s4v:'٩٨%',s4l:'گەیاندن لەکاتی خۆیدا'},
+  liveTrack:{heading:'ژمارەی شوێنکەوتنت هەیە؟',sub:'بارەکەت بە دیاریکردنی ژمارەی شوێنکەوتن بدۆزەرەوە',placeholder:'وەک GC10052341',button:'بگەڕێ'},
+  services:{eyebrow:'خزمەتگوزاری',heading:'خزمەتگوزارییەکانمان',sub:'چارەسەری تەواو بۆ گەیاندنی بار لە دەرەوە بۆ ناو عێراق',learnMore:'زیاتر بزانە',
+    items:{
+      air:{title:'گەیاندنی ئاسمانی',desc:'خێراترین ڕێگا بۆ بارە پەلەیەکان.',features:['کاتی گەیشتن: ١-٣ ڕۆژ','گونجاو بۆ بارە بەنرخ و پەلەکان','شوێنکەوتنی ڕاستەوخۆ']},
+      sea:{title:'گەیاندنی دەریایی',desc:'گونجاوترین تێچوون بۆ بارە قورس و گەورەکان.',features:['کاتی گەیشتن: ١٢-١٨ ڕۆژ','باشترین تێچوون بۆ بارە قورسەکان','گونجاو بۆ کۆنتەینەری تەواو یان بەشی کۆنتەینەر']},
+      customs:{title:'ئاسانکاری گومرگی',desc:'کارگێڕی تەواوی مامەڵەی گومرگ لە بەندەرەکانی عێراق.',features:['کارگێڕی بەڵگەنامەکان','پارەدانی باج و تێچووەکان','ڕاوێژکاری یاسایی گومرگ']},
+      warehouse:{title:'کۆگاداری',desc:'کۆگای پارێزراو و چاودێریکراو لە ئیمارات و عێراق.',features:['چاودێری ٢٤/٧','سیستەمی بەڕێوەبردنی کۆگا','بیمەی گونجاو بۆ کاڵاکان']},
+      door:{title:'گەیاندن بۆ بەردەرگا',desc:'گەیاندنی کۆتایی بارەکەت ڕاستەوخۆ بۆ ماڵ یان کۆمپانیاکەت.',features:['گەیاندن بۆ هەموو شارەکانی عێراق','ڕێکخستنی کاتی گەیاندن','پشتڕاستکردنەوەی وەرگرتن']}
+    }},
+  how:{eyebrow:'پرۆسە',heading:'چۆن کاردەکات',items:[
+    {title:'داواکاری بکە',desc:'وردەکاری بارەکەت بنێرە و بە چرکەیەک نرخێک وەربگرە.'},
+    {title:'وەرگرتن',desc:'تیمەکەمان بارەکەت لە چین یان ئیمارات وەردەگرێت.'},
+    {title:'گواستنەوە و گومرگ',desc:'بار بە دەریا یان ئاسمان دەگوازرێتەوە و کارەکانی گومرگ ئەنجام دەدرێت.'},
+    {title:'گەیاندن',desc:'بارەکەت بە سەلامەتی دەگاتە دەست تۆ لە هەر شوێنێکی عێراق.'}
+  ]},
+  why:{eyebrow:'هۆکار',heading:'بۆچی Global Cloud',items:[
+    {title:'شوێنکەوتنی ڕاستەوخۆ',desc:'لە هەر ساتێکدا بزانە بارەکەت لەکوێیە.',icon:'i-search'},
+    {title:'پارێزراو و بیمەکراو',desc:'هەموو بارەکان بە پارێزگاری تەواو دەگوازرێنەوە.',icon:'i-shield'},
+    {title:'باشترین نرخ',desc:'نرخی ڕکابەرانە بەبێ کێشەی شاراوە.',icon:'i-card'},
+    {title:'پشتگیری ٢٤/٧',desc:'تیمی پشتگیریمان هەمیشە ئامادەیە بۆ یارمەتیدانت.',icon:'i-clock'}
+  ]},
+  cta:{heading:'ئامادەیت بار بنێریت؟',sub:'ئەمڕۆ داواکاریەکەت بنێرە و لە کەمترین کات نرخێک وەربگرە.',b1:'داواکردنی نرخ',b2:'پەیوەندیمان پێوە بکە'},
+  footer:{blurb:'Global Cloud — گەیاندنی بار بە متمانەوە لە چین و ئیمارات بۆ هەموو عێراق.',quick:'بەستەرە خێراکان',servicesH:'خزمەتگوزارییەکان',contactH:'پەیوەندی',address:'هەولێر، هەرێمی کوردستان، عێراق',rights:'هەموو مافەکان پارێزراون.'},
+  track:{heading:'شوێنکەوتنی بار',sub:'ژمارەی شوێنکەوتنی بارەکەت بنووسە بۆ زانینی دۆخی ئێستا',searchPh:'وەک GC10052341',searchBtn:'بگەڕێ',
+    notFoundTitle:'هیچ بارێک نەدۆزرایەوە',notFoundBody:'تکایە ژمارەی شوێنکەوتن بپشکنە، یان داواکارییەکی نوێ تۆمار بکە.',requestInstead:'داواکاری نوێ بکە',
+    detailsH:'زانیاری بارکردن',timelineH:'هێڵی کات',save:'زیادکردن بۆ بارەکانم',saved:'زیادکرا ✓',signInToSave:'چوونەژوورەوە بۆ هەڵگرتن',
+    status:{pending:'چاوەڕوانە',transit:'لە ڕێگادایە',delivered:'گەیشت'},
+    steps:{placed:'داواکاری تۆمارکرا',pickedUp:'وەرگیرا',transit:'لە ڕێگایە',customs:'گومرگ',outForDelivery:'بەرەو گەیاندن',delivered:'گەیشت'},
+    type:{air:'گەیاندنی ئاسمانی',sea:'گەیاندنی دەریایی'},
+    weight:'کێش',volume:'قەبارە',items:'ژمارەی کاڵا',total:'کۆی گشتی',paid:'دراوە',due:'ماوە',eta:'خەمڵێنراو:',pendingValue:'دوای پێداچوونەوە'},
+  request:{heading:'داواکردنی نرخ / بارکردنی نوێ',sub:'وردەکاری بارەکەت پڕبکەرەوە، ڕاستەوخۆ ژمارەی شوێنکەوتن وەردەگریت.',
+    name:'ناوی تەواو',phone:'ژمارەی مۆبایل',email:'ئیمەیل (ئارەزوومەندانە)',origin:'لە کوێوە',destination:'بۆ کوێ',type:'جۆری گەیاندن',weight:'کێشی خەمڵێنراو (کیلۆگرام)',notes:'تێبینی زیاتر',
+    submit:'ناردنی داواکاری',sending:'دەنێردرێت...',successTitle:'داواکاریەکەت وەرگیرا 🎉',successBody:'ژمارەی شوێنکەوتنت ئەمەیە، هەڵیبگرە بۆ داهاتوو:',trackNow:'ئێستا شوێنی بکەوە',backHome:'گەڕانەوە بۆ سەرەکی',waConfirm:'پشتڕاستکردنەوە بە واتساپ',waPrefix:'سڵاو، داواکارییەکم ناردووە — ژمارەی شوێنکەوتن:'},
+  portal:{signInH:'چوونەژوورەوە',signInSub:'ناو و ئیمەیلت بنووسە بۆ بینینی بارەکانت',dashboardSub:'داشبۆردی هەژمارەکەت',name:'ناو',email:'ئیمەیل',phone:'ژمارەی مۆبایل (ئارەزوومەندانە)',continueBtn:'بەردەوامبە',trustNote:'زانیارییەکانت تایبەتن و لەگەڵ کەس هاوبەش ناکرێن',
+    hi:'سڵاو',myShipments:'بارەکانم',emptyTitle:'هێشتا هیچ بارێکت نییە',emptyBody:'بارێک بشوێنەوە یان داواکارییەکی نوێ بکە بۆ ئەوەی لێرە دەربکەوێت.',
+    qTrack:'شوێنکەوتنی بار',qRequest:'داواکاری نوێ',qEdit:'دەستکاری پرۆفایل',save:'پاشکەوتکردن',cancel:'پاشگەزبوونەوە',signOut:'چوونەدەرەوە'},
+  contact:{heading:'پەیوەندیمان پێوە بکە',sub:'ئامادەین یارمەتیت بدەین — پەیوەندیمان پێوە بکە بە هەر ڕێگایەک کە لات باشترە.',
+    phoneL:'ژمارەی مۆبایل',emailL:'ئیمەیل',whatsappL:'واتساپ',addressL:'ناونیشان',hoursL:'کاتەکانی کارکردن',hoursV:'شەممە - پێنجشەممە: ٩ی بەیانی - ٧ی ئێوارە',
+    formName:'ناوت',formEmail:'ئیمەیلت',formMsg:'پەیامەکەت',send:'ناردنی پەیام',sending:'دەنێردرێت...',sentMsg:'پەیامەکەت پاشکەوتکرا! بەم زووانە پەیوەندیت پێوە دەکەین.'},
+  places:{guangzhou:'گوانگژۆ، چین',shenzhen:'شینجن، چین',dubai:'دوبەی، ئیمارات',sharjah:'شارجە، ئیمارات',erbil:'هەولێر، عێراق',sulaymaniyah:'سلێمانی، عێراق',duhok:'دهۆک، عێراق',baghdad:'بەغدا، عێراق',basra:'بەسرە، عێراق'}
+},
+en:{
+  brand:{tagline:'LOGISTICS'},
+  nav:{home:'Home',services:'Services',track:'Track',contact:'Contact',signIn:'Sign In',dashboard:'Dashboard',quote:'Get a Quote'},
+  hero:{eyebrow:'CHINA  ·  UAE  ·  IRAQ',title:'Delivering Trust Across Borders',subtitle:'Global Cloud moves your cargo safely and quickly from China and the United Arab Emirates to every city in Iraq.',ctaTrack:'Track Shipment',ctaQuote:'Get a Quote',route:{a:'Guangzhou, China',b:'Dubai, UAE',c:'Erbil, Iraq'}},
+  trust:{s1v:'500+',s1l:'Shipments delivered monthly',s2v:'24/7',s2l:'Ongoing support',s3v:'48 hrs',s3l:'Avg. customs clearance',s4v:'98%',s4l:'On-time delivery'},
+  liveTrack:{heading:'Have a tracking number?',sub:'Find your shipment by entering its tracking ID',placeholder:'e.g. GC10052341',button:'Track'},
+  services:{eyebrow:'SERVICES',heading:'Our Services',sub:'End-to-end solutions for moving cargo into Iraq',learnMore:'Learn more',
+    items:{
+      air:{title:'Air Freight',desc:'The fastest route for urgent cargo.',features:['Transit time: 1-3 days','Ideal for urgent, high-value cargo','Real-time flight tracking']},
+      sea:{title:'Sea Freight',desc:'The most cost-effective option for heavy loads.',features:['Transit time: 12-18 days','Best cost for heavy loads','Full container or shared container options']},
+      customs:{title:'Customs Clearance',desc:'Complete customs handling at Iraqi ports of entry.',features:['Documentation handling','Duty and tax payment','Customs legal consultation']},
+      warehouse:{title:'Warehousing',desc:'Secure, monitored storage in the UAE and Iraq.',features:['24/7 monitoring','Warehouse management system','Optional cargo insurance']},
+      door:{title:'Door-to-Door Delivery',desc:'Final-mile delivery straight to your home or business.',features:['Delivery to every city in Iraq','Scheduled delivery windows','Delivery confirmation']}
+    }},
+  how:{eyebrow:'PROCESS',heading:'How It Works',items:[
+    {title:'Request a Quote',desc:'Send your shipment details and get a price in seconds.'},
+    {title:'Pickup',desc:'Our team collects your cargo in China or the UAE.'},
+    {title:'Transit & Customs',desc:'Cargo moves by sea or air while we handle customs.'},
+    {title:'Delivery',desc:'Your shipment arrives safely anywhere in Iraq.'}
+  ]},
+  why:{eyebrow:'WHY US',heading:'Why Global Cloud',items:[
+    {title:'Real-Time Tracking',desc:'Know exactly where your shipment is, any moment.',icon:'i-search'},
+    {title:'Secure & Insured',desc:'Every shipment is handled with full protection.',icon:'i-shield'},
+    {title:'Best Pricing',desc:'Competitive rates with no hidden costs.',icon:'i-card'},
+    {title:'24/7 Support',desc:'Our team is always here to help.',icon:'i-clock'}
+  ]},
+  cta:{heading:'Ready to Ship?',sub:'Submit your request today and get a quote in minutes.',b1:'Get a Quote',b2:'Contact Us'},
+  footer:{blurb:'Global Cloud — Shipping you can trust, from China and the UAE to all of Iraq.',quick:'Quick Links',servicesH:'Services',contactH:'Contact',address:'Erbil, Kurdistan Region, Iraq',rights:'All rights reserved.'},
+  track:{heading:'Track Shipment',sub:'Enter your tracking ID to see its current status',searchPh:'e.g. GC10052341',searchBtn:'Track',
+    notFoundTitle:'No shipment found',notFoundBody:'Please check the tracking ID, or submit a new request.',requestInstead:'Request a Shipment',
+    detailsH:'Shipment Details',timelineH:'Timeline',save:'Add to My Shipments',saved:'Saved ✓',signInToSave:'Sign in to save',
+    status:{pending:'Pending',transit:'In Transit',delivered:'Delivered'},
+    steps:{placed:'Order Placed',pickedUp:'Picked Up',transit:'In Transit',customs:'Customs',outForDelivery:'Out for Delivery',delivered:'Delivered'},
+    type:{air:'Air Freight',sea:'Sea Freight'},
+    weight:'Weight',volume:'Volume',items:'Items',total:'Total',paid:'Paid',due:'Due',eta:'Expected:',pendingValue:'To be confirmed'},
+  request:{heading:'Get a Quote / New Shipment',sub:'Fill in your shipment details and get a tracking ID instantly.',
+    name:'Full Name',phone:'Phone Number',email:'Email (optional)',origin:'Origin',destination:'Destination',type:'Shipping Type',weight:'Estimated Weight (kg)',notes:'Additional Notes',
+    submit:'Submit Request',sending:'Sending...',successTitle:'Request received 🎉',successBody:'Your tracking number is — save it for later:',trackNow:'Track It Now',backHome:'Back to Home',waConfirm:'Confirm via WhatsApp',waPrefix:'Hi, I just submitted a request — tracking number:'},
+  portal:{signInH:'Sign In',signInSub:'Enter your name and email to see your shipments',dashboardSub:'Your account dashboard',name:'Name',email:'Email',phone:'Phone (optional)',continueBtn:'Continue',trustNote:'Your info stays private and is never shared',
+    hi:'Hi',myShipments:'My Shipments',emptyTitle:'No shipments yet',emptyBody:'Track a shipment or submit a new request to see it here.',
+    qTrack:'Track Shipment',qRequest:'New Request',qEdit:'Edit Profile',save:'Save',cancel:'Cancel',signOut:'Sign Out'},
+  contact:{heading:'Get in Touch',sub:'We are here to help - reach us however is easiest for you.',
+    phoneL:'Phone',emailL:'Email',whatsappL:'WhatsApp',addressL:'Address',hoursL:'Working Hours',hoursV:'Sat - Thu: 9 AM - 7 PM',
+    formName:'Your Name',formEmail:'Your Email',formMsg:'Your Message',send:'Send Message',sending:'Sending...',sentMsg:'Message saved! We will get back to you shortly.'},
+  places:{guangzhou:'Guangzhou, China',shenzhen:'Shenzhen, China',dubai:'Dubai, UAE',sharjah:'Sharjah, UAE',erbil:'Erbil, Iraq',sulaymaniyah:'Sulaymaniyah, Iraq',duhok:'Duhok, Iraq',baghdad:'Baghdad, Iraq',basra:'Basra, Iraq'}
+}
+};
+
+const SERVICE_ORDER = ['air','sea','customs','warehouse','door'];
+const SERVICE_ICONS = {air:'i-plane',sea:'i-ship',customs:'i-clipboard',warehouse:'i-warehouse',door:'i-truck'};
+const ORIGIN_KEYS = ['guangzhou','shenzhen','dubai','sharjah'];
+const DEST_KEYS = ['erbil','sulaymaniyah','duhok','baghdad','basra'];
+const STEP_ORDER = ['placed','pickedUp','transit','customs','outForDelivery','delivered'];
+const KU_MONTHS = ['کانوونی دووەم','شوبات','ئازار','نیسان','ئایار','حوزەیران','تەمووز','ئاب','ئەیلوول','تشرینی یەکەم','تشرینی دووەم','کانوونی یەکەم'];
+const EN_MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+
+let currentLang = 'ku';
+
+function t(path){
+  const parts = path.split('.');
+  let node = I18N[currentLang];
+  for(const p of parts){ if(node==null) return ''; node = node[p]; }
+  return node==null ? '' : node;
+}
+
+function toArabicDigits(n){
+  const map={'0':'٠','1':'١','2':'٢','3':'٣','4':'٤','5':'٥','6':'٦','7':'٧','8':'٨','9':'٩'};
+  return String(n).replace(/[0-9]/g, d=>map[d]);
+}
+function formatDate(iso){
+  if(!iso) return '';
+  const dt = new Date(iso);
+  if(currentLang==='ku'){ return toArabicDigits(dt.getDate())+'ی '+KU_MONTHS[dt.getMonth()]+'ی '+toArabicDigits(dt.getFullYear()); }
+  return EN_MONTHS[dt.getMonth()]+' '+dt.getDate()+', '+dt.getFullYear();
+}
+function formatMoney(v){ return (v===null||v===undefined) ? t('track.pendingValue') : '$'+v; }
+function placeLabel(key){ return t('places.'+key) || key; }
+
+/* ================= STORAGE HELPERS ================= */
+async function safeGet(key, shared){
+  try{ const r = await window.storage.get(key, shared); return r ? r.value : null; }
+  catch(e){ return null; }
+}
+async function safeSet(key, value, shared){
+  try{ return await window.storage.set(key, value, shared); }
+  catch(e){ return null; }
+}
+async function safeDelete(key, shared){
+  try{ return await window.storage.delete(key, shared); }
+  catch(e){ return null; }
+}
+async function safeList(prefix, shared){
+  try{ const r = await window.storage.list(prefix, shared); return r ? r.keys : []; }
+  catch(e){ return []; }
+}
+
+function generateTrackingId(){
+  const num = 10052342 + Math.floor(Math.random()*899);
+  return 'GC'+num;
+}
+
+function seedShipments(){
+  const now = Date.now();
+  const past = n => new Date(now - n*86400000).toISOString();
+  const future = n => new Date(now + n*86400000).toISOString();
+  return [
+    {id:'GC10052341', originKey:'dubai', destKey:'erbil', type:'sea', weightKg:1250, volumeCbm:2.5, itemsCount:8, totalAmount:1250, paidAmount:750,
+      currentStepIndex:2, stepDates:{placed:past(17), pickedUp:past(13), transit:past(12)}, eta:future(4)},
+    {id:'GC10052340', originKey:'sharjah', destKey:'baghdad', type:'air', weightKg:640, volumeCbm:1.1, itemsCount:5, totalAmount:980, paidAmount:980,
+      currentStepIndex:5, stepDates:{placed:past(23), pickedUp:past(21), transit:past(20), customs:past(13), outForDelivery:past(9), delivered:past(8)}},
+    {id:'GC10052339', originKey:'guangzhou', destKey:'erbil', type:'sea', weightKg:2100, volumeCbm:4.2, itemsCount:14, totalAmount:1890, paidAmount:0,
+      currentStepIndex:0, stepDates:{placed:past(2)}, eta:future(22)}
+  ];
+}
+
+async function initShipments(){
+  if(sb) return; // Supabase is now the source of truth once configured (seed row is in supabase-schema.sql)
+  const keys = await safeList('shipment:', true);
+  if(!keys || keys.length===0){
+    for(const s of seedShipments()){ await safeSet('shipment:'+s.id, JSON.stringify(s), true); }
+  }
+}
+
+/* Convert between the app's shipment object shape and a Supabase row */
+function shipmentToRow(s){
+  const r = s.requester || {};
+  return {
+    id:s.id, customer_name:r.name||null, customer_phone:r.phone||null, customer_email:r.email||null, notes:r.notes||null,
+    origin_key:s.originKey, dest_key:s.destKey, type:s.type, weight_kg:s.weightKg, volume_cbm:s.volumeCbm,
+    items_count:s.itemsCount, total_amount:s.totalAmount||0, paid_amount:s.paidAmount||0,
+    current_step_index:s.currentStepIndex||0, step_dates:s.stepDates||{}, eta:s.eta||null
+  };
+}
+function rowToShipment(row){
+  return {
+    id:row.id, originKey:row.origin_key, destKey:row.dest_key, type:row.type,
+    weightKg:row.weight_kg, volumeCbm:row.volume_cbm, itemsCount:row.items_count,
+    totalAmount:row.total_amount, paidAmount:row.paid_amount,
+    currentStepIndex:row.current_step_index, stepDates:row.step_dates||{}, eta:row.eta,
+    requester:{name:row.customer_name, phone:row.customer_phone, email:row.customer_email, notes:row.notes}
+  };
+}
+
+async function getShipment(id){
+  if(sb){
+    const {data} = await sb.rpc('track_shipment', {p_id:id});
+    return (data && data[0]) ? rowToShipment(data[0]) : null;
+  }
+  const val = await safeGet('shipment:'+id, true);
+  return val ? JSON.parse(val) : null;
+}
+async function saveShipment(s){
+  if(sb){ await sb.from('shipments').upsert(shipmentToRow(s)); return; }
+  await safeSet('shipment:'+s.id, JSON.stringify(s), true);
+}
+async function getAllShipments(){
+  if(sb){
+    const {data} = await sb.from('shipments').select('*').order('created_at', {ascending:false});
+    return (data||[]).map(rowToShipment);
+  }
+  const keys = await safeList('shipment:', true);
+  const list = [];
+  for(const k of keys){ const val = await safeGet(k, true); if(val) list.push(JSON.parse(val)); }
+  return list.sort((a,b)=>(b.stepDates?.placed||'').localeCompare(a.stepDates?.placed||''));
+}
+
+async function getProfile(){
+  const val = await safeGet('profile', false);
+  return val ? JSON.parse(val) : null;
+}
+async function saveProfile(p){ await safeSet('profile', JSON.stringify(p), false); }
+
+function statusOf(s){ return s.currentStepIndex>=5 ? 'delivered' : (s.currentStepIndex===0 ? 'pending' : 'transit'); }
+
+/* ================= ROUTER ================= */
+function route(id){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  const target = document.getElementById('page-'+id);
+  if(target) target.classList.add('active');
+  document.querySelectorAll('.nav-links a, .mobile-menu a[data-route]').forEach(a=>a.classList.toggle('active', a.dataset.route===id));
+  window.scrollTo({top:0, behavior:'auto'});
+  closeMobileMenu();
+  if(id==='portal') renderPortal();
+  if(id==='services') renderServicesDetail();
+  if(id==='admin') renderAdminGate();
+}
+function toggleMobileMenu(){ document.getElementById('mobileMenu').classList.toggle('open'); }
+function closeMobileMenu(){ document.getElementById('mobileMenu').classList.remove('open'); }
+
+function goTrack(prefill){
+  route('track');
+  if(prefill){
+    document.getElementById('trackInput').value = prefill;
+    doTrackSearch();
+  }
+}
+
+/* ================= RENDER: HOME BLOCKS ================= */
+function renderHomeServices(){
+  const wrap = document.getElementById('homeServicesGrid');
+  wrap.innerHTML = SERVICE_ORDER.map(key=>{
+    const item = t('services.items.'+key);
+    return `<div class="service-card" onclick="route('services')">
+      <div class="service-icon"><svg class="icon-lg"><use href="#${SERVICE_ICONS[key]}"></use></svg></div>
+      <h4>${item.title}</h4>
+      <p>${item.desc}</p>
+      <span class="learn">${t('services.learnMore')} <svg class="icon-sm"><use href="#i-arrow"></use></svg></span>
+    </div>`;
+  }).join('');
+}
+function renderHow(){
+  const wrap = document.getElementById('howGrid');
+  const items = t('how.items');
+  wrap.innerHTML = items.map((it,i)=>`<div class="step-card">
+    <span class="step-num">0${i+1}</span>
+    <h4>${it.title}</h4><p>${it.desc}</p>
+  </div>`).join('');
+}
+function renderWhy(){
+  const wrap = document.getElementById('whyGrid');
+  const items = t('why.items');
+  wrap.innerHTML = items.map(it=>`<div class="card feature-card">
+    <div class="service-icon"><svg class="icon-lg"><use href="#${it.icon}"></use></svg></div>
+    <h4 style="font-size:15px; font-weight:800; margin-bottom:6px;">${it.title}</h4>
+    <p style="color:var(--muted); font-size:13.5px;">${it.desc}</p>
+  </div>`).join('');
+}
+function renderFooterServices(){
+  const wrap = document.getElementById('footerServicesList');
+  wrap.innerHTML = SERVICE_ORDER.map(key=>`<li><a onclick="route('services')">${t('services.items.'+key).title}</a></li>`).join('');
+}
+function renderServicesDetail(){
+  const wrap = document.getElementById('servicesDetailWrap');
+  wrap.innerHTML = SERVICE_ORDER.map(key=>{
+    const item = t('services.items.'+key);
+    return `<div class="service-detail reveal in-view">
+      <div class="service-icon"><svg class="icon-lg"><use href="#${SERVICE_ICONS[key]}"></use></svg></div>
+      <div>
+        <h3>${item.title}</h3>
+        <p class="desc">${item.desc}</p>
+        <ul class="feature-list">${item.features.map(f=>`<li><svg class="icon-sm"><use href="#i-check"></use></svg>${f}</li>`).join('')}</ul>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+/* ================= RENDER: TRACK ================= */
+function timelineHTML(s){
+  return STEP_ORDER.map((key,i)=>{
+    const status = statusOf(s);
+    const done = i < s.currentStepIndex || (i===s.currentStepIndex && status==='delivered');
+    const current = i===s.currentStepIndex && status!=='delivered';
+    const cls = done?'done':(current?'current':'future');
+    let dateStr = '';
+    if(s.stepDates && s.stepDates[key]) dateStr = formatDate(s.stepDates[key]);
+    else if(key==='delivered' && s.eta) dateStr = t('track.eta')+' '+formatDate(s.eta);
+    return `<div class="tl-step ${cls}"><div class="tl-dot"></div><div class="tl-body"><b>${t('track.steps.'+key)}</b><span>${dateStr}</span></div></div>`;
+  }).join('');
+}
+
+async function shipmentCardHTML(s){
+  const status = statusOf(s);
+  const profile = await getProfile();
+  const saved = profile && profile.savedShipmentIds && profile.savedShipmentIds.includes(s.id);
+  let saveBtnLabel, saveBtnClass;
+  if(!profile){ saveBtnLabel = t('track.signInToSave'); saveBtnClass='btn-outline'; }
+  else if(saved){ saveBtnLabel = t('track.saved'); saveBtnClass='btn-ghost'; }
+  else { saveBtnLabel = t('track.save'); saveBtnClass='btn-primary'; }
+  const dueVal = (s.totalAmount!==null && s.totalAmount!==undefined) ? formatMoney(s.totalAmount - s.paidAmount) : formatMoney(null);
+  return `
+  <div class="track-hero-card reveal in-view">
+    <div class="thc-top">
+      <span class="id-badge mono">${s.id}</span>
+      <span class="stamp ${status}">${t('track.status.'+status)}</span>
+    </div>
+    <div class="route-line"><span>${placeLabel(s.originKey)}</span><span class="arrow">→</span><span>${placeLabel(s.destKey)}</span></div>
+  </div>
+  <div class="grid-2 reveal in-view">
+    <div class="card">
+      <h4>${t('track.detailsH')}</h4>
+      <div class="kv"><span>${t('request.type')}</span><b>${t('track.type.'+s.type)}</b></div>
+      <div class="kv"><span>${t('track.weight')}</span><b>${s.weightKg} kg</b></div>
+      <div class="kv"><span>${t('track.volume')}</span><b>${s.volumeCbm} CBM</b></div>
+      ${s.itemsCount!=null?`<div class="kv"><span>${t('track.items')}</span><b>${s.itemsCount}</b></div>`:''}
+      <div class="kv"><span>${t('track.total')}</span><b>${formatMoney(s.totalAmount)}</b></div>
+      <div class="kv"><span>${t('track.paid')}</span><b>${formatMoney(s.paidAmount)}</b></div>
+      <div class="kv"><span>${t('track.due')}</span><b style="color:var(--amber);">${dueVal}</b></div>
+    </div>
+    <div class="card">
+      <h4>${t('track.timelineH')}</h4>
+      <div class="timeline">${timelineHTML(s)}</div>
+    </div>
+  </div>
+  <button class="btn ${saveBtnClass} btn-block" style="margin-top:20px;" onclick="toggleSave('${s.id}')">${saveBtnLabel}</button>
+  `;
+}
+
+function notFoundHTML(){
+  return `<div class="empty-state reveal in-view">
+    <svg class="icon-lg"><use href="#i-search"></use></svg>
+    <h3>${t('track.notFoundTitle')}</h3>
+    <p>${t('track.notFoundBody')}</p>
+    <button class="btn btn-primary" onclick="route('request')">${t('track.requestInstead')}</button>
+  </div>`;
+}
+
+let lastTrackedId = null;
+async function doTrackSearch(){
+  const val = document.getElementById('trackInput').value.trim().toUpperCase();
+  if(!val) return;
+  lastTrackedId = val;
+  const wrap = document.getElementById('trackResult');
+  wrap.innerHTML = '<p class="hint">'+ (currentLang==='ku'?'گەڕان...':'Searching...') +'</p>';
+  const shipment = await getShipment(val);
+  wrap.innerHTML = shipment ? await shipmentCardHTML(shipment) : notFoundHTML();
+}
+async function toggleSave(id){
+  const profile = await getProfile();
+  if(!profile){ route('portal'); return; }
+  profile.savedShipmentIds = profile.savedShipmentIds || [];
+  const idx = profile.savedShipmentIds.indexOf(id);
+  if(idx===-1) profile.savedShipmentIds.push(id); else profile.savedShipmentIds.splice(idx,1);
+  await saveProfile(profile);
+  const shipment = await getShipment(id);
+  document.getElementById('trackResult').innerHTML = shipment ? await shipmentCardHTML(shipment) : notFoundHTML();
+}
+
+/* ================= REQUEST FORM ================= */
+function populateSelect(id, keys){
+  const sel = document.getElementById(id);
+  const prevVal = sel.value;
+  sel.innerHTML = keys.map(k=>`<option value="${k}">${placeLabel(k)}</option>`).join('');
+  if(keys.includes(prevVal)) sel.value = prevVal;
+}
+function populateRequestSelects(){
+  populateSelect('reqOrigin', ORIGIN_KEYS);
+  populateSelect('reqDestination', DEST_KEYS);
+}
+
+async function handleRequestSubmit(e){
+  e.preventDefault();
+  const btn = document.getElementById('reqSubmitBtn');
+  btn.disabled = true; const originalLabel = btn.textContent; btn.textContent = t('request.sending');
+
+  const name = document.getElementById('reqName').value.trim();
+  const phone = document.getElementById('reqPhone').value.trim();
+  const email = document.getElementById('reqEmail').value.trim();
+  const originKey = document.getElementById('reqOrigin').value;
+  const destKey = document.getElementById('reqDestination').value;
+  const type = document.getElementById('reqType').value;
+  const weightKg = Number(document.getElementById('reqWeight').value) || 0;
+  const notes = document.getElementById('reqNotes').value.trim();
+
+  const id = generateTrackingId();
+  const shipment = {
+    id, originKey, destKey, type, weightKg,
+    volumeCbm: Math.round((weightKg/500)*10)/10,
+    itemsCount: null, totalAmount: null, paidAmount: 0,
+    currentStepIndex: 0, stepDates:{placed: new Date().toISOString()},
+    requester:{name, phone, email, notes}
+  };
+  await saveShipment(shipment);
+  notifyOwner('داواکاریی نوێی بارکردن — '+id, {
+    'ژمارەی شوێنکەوتن':id, 'ناو':name, 'مۆبایل':phone, 'ئیمەیل':(email||'—'),
+    'لە':placeLabel(originKey), 'بۆ':placeLabel(destKey),
+    'جۆر':t('track.type.'+type), 'کێش (kg)':weightKg, 'تێبینی':(notes||'—')
+  });
+
+  const profile = await getProfile();
+  if(profile){
+    profile.savedShipmentIds = profile.savedShipmentIds || [];
+    if(!profile.savedShipmentIds.includes(id)) profile.savedShipmentIds.push(id);
+    await saveProfile(profile);
+  }
+
+  btn.disabled = false; btn.textContent = originalLabel;
+  document.getElementById('requestFormWrap').style.display = 'none';
+  const successWrap = document.getElementById('requestSuccessWrap');
+  successWrap.style.display = 'block';
+  successWrap.innerHTML = `<div class="success-panel">
+    <svg class="icon-lg"><use href="#i-check"></use></svg>
+    <h3 style="font-size:19px; font-weight:800;">${t('request.successTitle')}</h3>
+    <p style="color:var(--muted); margin-top:8px;">${t('request.successBody')}</p>
+    <div class="success-id mono">${id}</div>
+    <div class="success-actions">
+      <button class="btn btn-primary" onclick="resetRequestForm(); goTrack('${id}')">${t('request.trackNow')}</button>
+      <button class="btn btn-outline" onclick="resetRequestForm(); route('home')">${t('request.backHome')}</button>
+    </div>
+    <a class="btn btn-ghost btn-block" style="margin-top:12px;" target="_blank" rel="noopener" href="https://wa.me/${OWNER_WHATSAPP}?text=${encodeURIComponent(t('request.waPrefix')+' '+id)}">
+      <svg class="icon-sm"><use href="#i-chat"></use></svg> ${t('request.waConfirm')}
+    </a>
+  </div>`;
+  e.target.reset();
+  populateRequestSelects();
+}
+function resetRequestForm(){
+  document.getElementById('requestFormWrap').style.display = 'block';
+  document.getElementById('requestSuccessWrap').style.display = 'none';
+  document.getElementById('requestSuccessWrap').innerHTML = '';
+}
+
+/* ================= PORTAL ================= */
+async function handleSignIn(e){
+  e.preventDefault();
+  const name = document.getElementById('piName').value.trim();
+  const email = document.getElementById('piEmail').value.trim();
+  const phone = document.getElementById('piPhone').value.trim();
+  if(!name || !email) return;
+  const existing = await getProfile();
+  const profile = {name, email, phone, savedShipmentIds:(existing && existing.savedShipmentIds) || []};
+  await saveProfile(profile);
+  await renderPortal();
+  await updateNavAuthState();
+}
+function handleSignOut(){
+  document.getElementById('portalDashboard').style.display = 'none';
+  document.getElementById('portalSignIn').style.display = 'block';
+  document.getElementById('portalHeadSub').setAttribute('data-i18n','portal.signInSub');
+  applyI18n();
+}
+function toggleEditProfile(){
+  const wrap = document.getElementById('editProfileWrap');
+  if(wrap.style.display==='none'){ renderEditProfile(); wrap.style.display='block'; }
+  else{ wrap.style.display='none'; }
+}
+async function renderEditProfile(){
+  const profile = await getProfile();
+  if(!profile) return;
+  const wrap = document.getElementById('editProfileWrap');
+  wrap.innerHTML = `<div class="card">
+    <div class="form-row"><label class="field-label">${t('portal.name')}</label><input class="field" id="epName" value="${profile.name}"></div>
+    <div class="form-row"><label class="field-label">${t('portal.email')}</label><input class="field" type="email" id="epEmail" value="${profile.email}"></div>
+    <div class="form-row"><label class="field-label">${t('portal.phone')}</label><input class="field" type="tel" id="epPhone" value="${profile.phone||''}"></div>
+    <div style="display:flex; gap:10px;">
+      <button class="btn btn-primary" onclick="saveEditProfile()">${t('portal.save')}</button>
+      <button class="btn btn-outline" onclick="toggleEditProfile()">${t('portal.cancel')}</button>
+    </div>
+  </div>`;
+}
+async function saveEditProfile(){
+  const profile = await getProfile();
+  profile.name = document.getElementById('epName').value.trim() || profile.name;
+  profile.email = document.getElementById('epEmail').value.trim() || profile.email;
+  profile.phone = document.getElementById('epPhone').value.trim();
+  await saveProfile(profile);
+  document.getElementById('editProfileWrap').style.display = 'none';
+  await renderPortal();
+}
+
+function emptyShipmentsHTML(){
+  return `<div class="empty-state">
+    <svg class="icon-lg"><use href="#i-box"></use></svg>
+    <h3>${t('portal.emptyTitle')}</h3>
+    <p>${t('portal.emptyBody')}</p>
+    <div style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
+      <button class="btn btn-primary" onclick="goTrack()">${t('portal.qTrack')}</button>
+      <button class="btn btn-outline" onclick="route('request')">${t('portal.qRequest')}</button>
+    </div>
+  </div>`;
+}
+function shipmentRowHTML(s){
+  const status = statusOf(s);
+  return `<div class="track-row" onclick="goTrack('${s.id}')">
+    <div class="trow-left"><b class="mono">${s.id}</b><span>${placeLabel(s.originKey)} → ${placeLabel(s.destKey)}</span></div>
+    <span class="stamp ${status}">${t('track.status.'+status)}</span>
+  </div>`;
+}
+async function renderMyShipments(profile){
+  const wrap = document.getElementById('myShipmentsList');
+  const ids = profile.savedShipmentIds || [];
+  if(ids.length===0){ wrap.innerHTML = emptyShipmentsHTML(); return; }
+  const rows = await Promise.all(ids.map(id=>getShipment(id)));
+  const valid = rows.filter(Boolean);
+  wrap.innerHTML = valid.length ? valid.map(shipmentRowHTML).join('') : emptyShipmentsHTML();
+}
+async function renderPortal(){
+  const profile = await getProfile();
+  if(profile){
+    document.getElementById('portalSignIn').style.display = 'none';
+    document.getElementById('portalDashboard').style.display = 'block';
+    document.getElementById('dashName').textContent = profile.name.split(' ')[0];
+    document.getElementById('editProfileWrap').style.display = 'none';
+    await renderMyShipments(profile);
+  } else {
+    document.getElementById('portalSignIn').style.display = 'block';
+    document.getElementById('portalDashboard').style.display = 'none';
+  }
+}
+async function updateNavAuthState(){
+  const profile = await getProfile();
+  const navLabel = document.getElementById('authNavLabel');
+  const mobileLabel = document.getElementById('mobileAuthLabel');
+  const label = profile ? (t('nav.dashboard')+' · '+profile.name.split(' ')[0]) : t('nav.signIn');
+  navLabel.textContent = label;
+  mobileLabel.textContent = label;
+}
+
+/* ================= CONTACT ================= */
+async function handleContactSubmit(e){
+  e.preventDefault();
+  const btn = e.target.querySelector('button[type=submit]');
+  const original = btn.textContent; btn.disabled = true; btn.textContent = t('contact.sending');
+  const name = document.getElementById('cName').value.trim();
+  const email = document.getElementById('cEmail').value.trim();
+  const message = document.getElementById('cMsg').value.trim();
+  await safeSet('message:'+Date.now(), JSON.stringify({name,email,message,at:new Date().toISOString()}), true);
+  if(sb) await sb.from('messages').insert({name, email, message});
+  notifyOwner('پەیامی نوێ لە فۆرمی پەیوەندی — '+name, {'ناو':name, 'ئیمەیل':email, 'پەیام':message});
+  document.getElementById('contactFormWrap').innerHTML = `<div style="text-align:center; padding:30px 10px;">
+    <svg class="icon-lg" style="color:var(--mint);"><use href="#i-check"></use></svg>
+    <p style="margin-top:12px; font-weight:700;">${t('contact.sentMsg')}</p>
+  </div>`;
+}
+
+/* ================= I18N APPLY ================= */
+function applyI18n(){
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const val = t(el.getAttribute('data-i18n'));
+    if(typeof val === 'string') el.textContent = val;
+  });
+  document.querySelectorAll('[data-i18n-ph]').forEach(el=>{
+    const val = t(el.getAttribute('data-i18n-ph'));
+    if(typeof val === 'string') el.setAttribute('placeholder', val);
+  });
+  renderHomeServices();
+  renderHow();
+  renderWhy();
+  renderFooterServices();
+  populateRequestSelects();
+  if(document.getElementById('page-services').classList.contains('active')) renderServicesDetail();
+  document.getElementById('yearNow').textContent = new Date().getFullYear();
+  document.getElementById('langKuBtn').classList.toggle('active', currentLang==='ku');
+  document.getElementById('langEnBtn').classList.toggle('active', currentLang==='en');
+}
+
+async function setLang(lang){
+  currentLang = lang;
+  document.documentElement.lang = lang==='ku' ? 'ckb' : 'en';
+  document.documentElement.dir = lang==='ku' ? 'rtl' : 'ltr';
+  await safeSet('lang', lang, false);
+  applyI18n();
+  await updateNavAuthState();
+  if(lastTrackedId && document.getElementById('page-track').classList.contains('active')){
+    const shipment = await getShipment(lastTrackedId);
+    document.getElementById('trackResult').innerHTML = shipment ? await shipmentCardHTML(shipment) : notFoundHTML();
+  }
+}
+
+/* ================= STAFF CONSOLE (admin / accountant) =================
+   Separate from the customer portal entirely — real Supabase Auth login,
+   role read from the `staff` table. Reachable only via #admin (not linked
+   in the main customer nav) plus a small link in the footer. */
+const STEP_LABELS_KU = ['داواکاری تۆمارکرا','هەڵگیرا','لە ڕێگایە','گومرگ','لە ڕێی گەیاندنە','گەیشت'];
+
+async function renderAdminGate(){
+  const loginView = document.getElementById('adminLoginView');
+  const dashView = document.getElementById('adminDashView');
+  const notConfigured = document.getElementById('adminNotConfigured');
+  if(!sb){ notConfigured.style.display = 'block'; loginView.querySelector('form').style.display = 'none'; return; }
+  notConfigured.style.display = 'none'; loginView.querySelector('form').style.display = 'block';
+
+  const {data:{session}} = await sb.auth.getSession();
+  if(!session){ loginView.style.display = 'block'; dashView.style.display = 'none'; return; }
+
+  const {data:staffRow} = await sb.from('staff').select('*').eq('id', session.user.id).maybeSingle();
+  if(!staffRow){
+    document.getElementById('staffLoginError').style.display = 'block';
+    document.getElementById('staffLoginError').textContent = 'ئەم هەژمارە هیچ ڕۆڵێکی دیاریکراوی نییە لە staff دا.';
+    await sb.auth.signOut();
+    loginView.style.display = 'block'; dashView.style.display = 'none';
+    return;
+  }
+  loginView.style.display = 'none'; dashView.style.display = 'block';
+  document.getElementById('staffRoleLabel').textContent = staffRow.role==='admin' ? 'ئەدمین' : 'محاسب';
+  document.getElementById('staffEmailLabel').textContent = session.user.email;
+  const shipments = await getAllShipments();
+  document.getElementById('adminContent').innerHTML = staffRow.role==='admin'
+    ? renderAdminOpsHTML(shipments)
+    : renderAccountantOpsHTML(shipments);
+}
+
+async function handleStaffSignIn(e){
+  e.preventDefault();
+  const errEl = document.getElementById('staffLoginError');
+  errEl.style.display = 'none';
+  const email = document.getElementById('staffEmail').value.trim();
+  const password = document.getElementById('staffPassword').value;
+  const btn = document.getElementById('staffLoginBtn');
+  btn.disabled = true;
+  const {error} = await sb.auth.signInWithPassword({email, password});
+  btn.disabled = false;
+  if(error){ errEl.textContent = 'هەڵە: ئیمەیل یان وشەی نهێنی هەڵەیە.'; errEl.style.display = 'block'; return; }
+  await renderAdminGate();
+}
+async function handleStaffSignOut(){ await sb.auth.signOut(); await renderAdminGate(); }
+
+function renderAdminOpsHTML(shipments){
+  if(shipments.length===0) return '<p class="hint">هیچ بارکردنێک نییە.</p>';
+  return '<div class="admin-list">' + shipments.map(s=>`
+    <div class="admin-row">
+      <div class="admin-row-main">
+        <b class="mono">${s.id}</b>
+        <span>${s.requester?.name||'—'} · ${s.requester?.phone||'—'}</span>
+        <span class="hint">${placeLabel(s.originKey)} → ${placeLabel(s.destKey)} · ${s.weightKg||0}kg</span>
+      </div>
+      <select class="field" style="max-width:180px;" onchange="updateShipmentStep('${s.id}', Number(this.value))">
+        ${STEP_LABELS_KU.map((lbl,i)=>`<option value="${i}" ${s.currentStepIndex===i?'selected':''}>${lbl}</option>`).join('')}
+      </select>
+    </div>`).join('') + '</div>';
+}
+
+function renderAccountantOpsHTML(shipments){
+  if(shipments.length===0) return '<p class="hint">هیچ بارکردنێک نییە.</p>';
+  return '<div class="admin-list">' + shipments.map(s=>`
+    <div class="admin-row">
+      <div class="admin-row-main">
+        <b class="mono">${s.id}</b>
+        <span>${s.requester?.name||'—'}</span>
+      </div>
+      <div class="admin-fin-inputs">
+        <input class="field" type="number" id="tot-${s.id}" value="${s.totalAmount||0}" style="max-width:110px;" placeholder="کۆی گشتی">
+        <input class="field" type="number" id="paid-${s.id}" value="${s.paidAmount||0}" style="max-width:110px;" placeholder="پارەدراو">
+        <button class="btn btn-outline" style="padding:10px 16px;" onclick="updateShipmentFinance('${s.id}')">پاشەکەوتکردن</button>
+      </div>
+    </div>`).join('') + '</div>';
+}
+
+async function updateShipmentStep(id, stepIndex){
+  const s = await getShipmentForStaff(id);
+  if(!s) return;
+  s.currentStepIndex = stepIndex;
+  s.stepDates = s.stepDates || {};
+  if(!s.stepDates[STEP_KEYS[stepIndex]]) s.stepDates[STEP_KEYS[stepIndex]] = new Date().toISOString();
+  await saveShipment(s);
+}
+async function updateShipmentFinance(id){
+  const s = await getShipmentForStaff(id);
+  if(!s) return;
+  s.totalAmount = Number(document.getElementById('tot-'+id).value) || 0;
+  s.paidAmount = Number(document.getElementById('paid-'+id).value) || 0;
+  await saveShipment(s);
+}
+/* Staff-side full read (bypasses the public RPC's limited columns; relies on the
+   "staff full access" RLS policy, so this only actually returns data when signed in as staff) */
+async function getShipmentForStaff(id){
+  if(!sb) return null;
+  const {data} = await sb.from('shipments').select('*').eq('id', id).maybeSingle();
+  return data ? rowToShipment(data) : null;
+}
+
+/* ================= SCROLL REVEAL ================= */
+function setupReveal(){
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    document.querySelectorAll('.reveal').forEach(el=>el.classList.add('in-view'));
+    return;
+  }
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{ if(entry.isIntersecting) entry.target.classList.add('in-view'); });
+  }, {threshold:0.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+}
+
+/* ================= INIT ================= */
+async function init(){
+  const storedLang = await safeGet('lang', false);
+  currentLang = storedLang || 'ku';
+  document.documentElement.lang = currentLang==='ku' ? 'ckb' : 'en';
+  document.documentElement.dir = currentLang==='ku' ? 'rtl' : 'ltr';
+
+  await initShipments();
+  applyI18n();
+  await updateNavAuthState();
+  setupReveal();
+  route(location.hash==='#admin' ? 'admin' : 'home');
+}
+window.addEventListener('hashchange', ()=>{ if(location.hash==='#admin') route('admin'); });
+init();
+</script>
+</body>
+</html>
